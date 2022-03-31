@@ -1,4 +1,6 @@
 @startuml
+!pragma layout smetana
+
 (Main)<|-- (Admin)
 (Admin) <|-- (Team)
 (Admin) <|-- (Date)
