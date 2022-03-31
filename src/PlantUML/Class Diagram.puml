@@ -6,21 +6,29 @@ class Main {
 }
 
 class UI {
+- ArrayList<Team> teamList;
 
 }
 
 class Player {
-String name;
+- String name;
++ Player(String name);
+- ArrayList<Player> player
+- Scanner sc;
++ String toString();
+- createPlayer();
 
-Public Player()
-ArrayList<Player> players
 }
 
 class Team {
-int maxAmountOfPlayers;
-int minAmountOfPlayers;
+- int maxAmountOfPlayers;
+- int minAmountOfPlayers;
+- ArrayList<Team> teamName
+- createTeam();
+- String team;
++ Team();
 
-ArrayList<Team> teams
+
 }
 
 class Admin {
@@ -32,9 +40,6 @@ class Knockout {
 
 }
 
-class GroupStage {
-
-}
 
 class Tournament {
 
@@ -44,7 +49,18 @@ class Interface {
 
 }
 
+Main -- UI
+Team --Player : 2.. 5
+Main -- Interface
+Admin -- Knockout
 
+Admin -- Team
+
+Tournament <|-- Knockout
+
+UI <|-- Player
+UI -- Team
+UI <|-- Admin
 
 
 @enduml
