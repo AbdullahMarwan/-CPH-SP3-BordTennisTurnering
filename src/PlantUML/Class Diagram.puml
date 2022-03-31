@@ -1,4 +1,5 @@
 @startuml
+!pragma layout smetana
 
 class Main {
  Interface();
@@ -9,11 +10,17 @@ class UI {
 }
 
 class Player {
+String name;
 
+Public Player()
+ArrayList<Player> players
 }
 
 class Team {
+int maxAmountOfPlayers;
+int minAmountOfPlayers;
 
+ArrayList<Team> teams
 }
 
 class Admin {
