@@ -2,65 +2,67 @@
 !pragma layout smetana
 
 class Main {
- Interface();
+    Interface();
 }
 
 class UI {
-- ArrayList<Team> teamList;
+    - ArrayList<Team> teamList;
+    - String getUserInput(String msg);
 
 }
 
 class Player {
-- String name;
-+ Player(String name);
-- ArrayList<Player> player
-- Scanner sc;
-+ String toString();
-- createPlayer();
+    - String playerName;
+    + Player(String playerName);
+    - ArrayList<Player> player
+    - Scanner sc;
+    + String toString();
+    - createPlayer();
 
 }
 
 class Team {
-- int maxAmountOfPlayers;
-- int minAmountOfPlayers;
-- ArrayList<Team> teamName
-- createTeam();
-- String team;
-+ Team();
-
-
-}
-
-class Admin {
+    - int maxAmountOfPlayers;
+    - int minAmountOfPlayers;
+    - ArrayList<Team> team
+    - createTeam();
+    - String teamName;
+    + Team(String teamName);
+    + String toString();
+    + String getTeamName();
 
 }
 
 class Knockout {
-
+    - int bracketSize;
+    - ArrayList<ArrayList<Team>> brackets;
 
 }
-
 
 class Tournament {
+    - ArrayList<ArrayList> tournament;
+    - ArrayList<Team> match;
+    - ArrayList<Team> teams;
 
 }
 
-class Interface {
+class Admin {
+    - Scanner sc;
+    - Options();
+    + inputFromUser();
 
 }
 
 Main -- UI
 Team --Player : 2.. 5
-Main -- Interface
-Admin -- Knockout
 
-Admin -- Team
-
+Main -- Admin
 Tournament <|-- Knockout
+Admin <|-- Tournament
+Main <|-- Tournament
 
 UI <|-- Player
-UI -- Team
-UI <|-- Admin
+UI -- Team : 8
 
 
 @enduml
