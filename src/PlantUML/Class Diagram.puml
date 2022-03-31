@@ -1,11 +1,43 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+class Main {
+ Interface();
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+class UI {
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+}
+
+class Player {
+
+}
+
+class Team {
+
+}
+
+class Admin {
+
+}
+
+class Knockout {
+
+
+}
+
+class GroupStage {
+
+}
+
+class Tournament {
+
+}
+
+class Interface {
+
+}
+
+
+
+
 @enduml
