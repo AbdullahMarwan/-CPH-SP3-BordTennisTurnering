@@ -52,25 +52,31 @@ class Tournament {
 
 interface IO {
     - saveGameData();
+    - saveTeamData();
+    - saveTournamentData();
+
 }
 
 class fileIO {
     - readGameData(String path);
+    - readTeamData(String path);
+    - readTournamentData(String path);
 }
 
 
-Main -- IO
-Team --Player : Has a... 2.. 5
+
+Team --Player : 2.. 5
 
 IO <|-- fileIO
-IO -- UI
+Tournament -- IO
 
-Tournament -- Team
+Tournament <|-- Team : 8
 Tournament <|-- Knockout
+Tournament <|-- UI
 Main <|-- Tournament
 
-UI <|-- Player
-UI -- Team : 8
+
+
 
 
 @enduml
