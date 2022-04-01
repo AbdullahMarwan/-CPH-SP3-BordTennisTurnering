@@ -8,6 +8,9 @@ class Main {
 class UI {
     - ArrayList<Team> teamList;
     - String getUserInput(String msg);
+    - Scanner sc;
+    - Options();
+    + inputFromUser();
 
 }
 
@@ -46,19 +49,24 @@ class Tournament {
 
 }
 
-class Admin {
-    - Scanner sc;
-    - Options();
-    + inputFromUser();
 
+interface IO {
+    - saveGameData();
 }
 
-Main -- UI
-Team --Player : 2.. 5
+class fileIO {
+    - readGameData(String path);
+}
 
-Main -- Admin
+
+Main -- IO
+Team --Player : Has a... 2.. 5
+
+IO <|-- fileIO
+IO -- UI
+
+Tournament -- Team
 Tournament <|-- Knockout
-Admin <|-- Tournament
 Main <|-- Tournament
 
 UI <|-- Player
