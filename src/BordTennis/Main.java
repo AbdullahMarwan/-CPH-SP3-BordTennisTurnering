@@ -1,4 +1,4 @@
-package com.company;
+package BordTennis;
 
 public class Main {
 
