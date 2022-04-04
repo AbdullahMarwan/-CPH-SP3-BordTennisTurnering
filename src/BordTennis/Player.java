@@ -11,9 +11,7 @@ public class Player {
     public Player(String playerName) {
         this.playerName = playerName;
     }
-
-    ArrayList<Player> players = new ArrayList<>();
-
+    
     public void createPlayer(ArrayList<Player> arrayList) {
         String input = sc.nextLine();
         System.out.println("What's your name?\n");
