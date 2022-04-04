@@ -5,19 +5,22 @@ import java.util.Scanner;
 
 public class UI {
 
+    Player player;
     Scanner sc = new Scanner(System.in);
+    boolean input = true;
 
     private ArrayList<Team> teamList = new ArrayList<>();
 
-    private String getUserInput(String msg) {
-        return null;
+
+    private void getUserInput(String msg) {
+        System.out.println(msg);
     }
 
     private void Options() {
 
     }
 
-    public void inputFromUser(){
+    public void inputFromUser() {
 
     }
 }
