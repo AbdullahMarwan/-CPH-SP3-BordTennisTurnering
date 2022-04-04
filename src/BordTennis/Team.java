@@ -8,25 +8,36 @@ public class Team
     Scanner sc = new Scanner(System.in);
     String teamName;
     ArrayList<Player> team;
+    Player player;
 
-    public Team(String teamName, ArrayList<Player> team)
+    public Team(String teamName)
     {
-        this.teamName = teamName;
-        this.team = team;
+        this.teamName=teamName;
     }
 
-    public void createTeam(ArrayList<Player> team)
+    public void createTeam()
     {
-        String nameInput = sc.nextLine();
         System.out.println("What's your team name?\n");
-
-        int intInput = sc.nextInt();
+        String teamName = sc.nextLine();
+        this.teamName=teamName;
         System.out.println("How many players are on your team?\n");
-        for(int i = 5; i<=intInput && i>2; i--)
+        int teamSize = sc.nextInt();
+        try
         {
-            Player player = new Player();
-            player.createPlayer(team);
+            for (int i = Math.abs(teamSize-5); i<5 && i>=2; i++)
+            {
+                player.createPlayer(team);
+            }
+        }
+
+        catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("Invalid team size - must be between 2-5.");
         }
     }
 
+    public String getTeamName() 
+    {
+        return teamName;
+    }
 }

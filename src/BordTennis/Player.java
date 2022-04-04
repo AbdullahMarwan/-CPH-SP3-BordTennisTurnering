@@ -13,9 +13,9 @@ public class Player {
     }
 
     public void createPlayer(ArrayList<Player> arrayList) {
-        String input = sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("What's your name?\n");
-        Player player = new Player(input);
+        Player player = new Player(name);
         arrayList.add(player);
     }
 
