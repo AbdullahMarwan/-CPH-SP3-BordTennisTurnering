@@ -1,0 +1,82 @@
+@startuml
+!pragma layout smetana
+
+class Main {
+    Interface();
+}
+
+class UI {
+    - ArrayList<Team> teamList;
+    - String getUserInput(String msg);
+    - Scanner sc;
+    - Options();
+    + inputFromUser();
+
+}
+
+class Player {
+    - String playerName;
+    + Player(String playerName);
+    - ArrayList<Player> player
+    - Scanner sc;
+    + String toString();
+    - createPlayer();
+
+}
+
+class Team {
+    - int maxAmountOfPlayers;
+    - int minAmountOfPlayers;
+    - ArrayList<Team> team
+    - createTeam();
+    - String teamName;
+    + Team(String teamName);
+    + String toString();
+    + String getTeamName();
+
+}
+
+class Knockout {
+    - int bracketSize;
+    - ArrayList<ArrayList<Team>> brackets;
+
+}
+
+class Tournament {
+    - ArrayList<ArrayList> tournament;
+    - ArrayList<Team> match;
+    - ArrayList<Team> teams;
+
+}
+
+
+interface IO {
+    - saveGameData();
+    - saveTeamData();
+    - saveTournamentData();
+
+}
+
+class fileIO {
+    - readGameData(String path);
+    - readTeamData(String path);
+    - readTournamentData(String path);
+}
+
+
+
+Team --Player : 2.. 5
+
+IO <|-- fileIO
+Tournament -- IO
+
+Tournament <|-- Team : 8
+Tournament <|-- Knockout
+Tournament <|-- UI
+Main <|-- Tournament
+
+
+
+
+
+@enduml
