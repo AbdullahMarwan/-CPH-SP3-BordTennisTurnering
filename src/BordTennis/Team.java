@@ -15,20 +15,38 @@ public class Team {
     }
 
     public void createTeam() {
-        System.out.println("Current team name: " + teamName);
-        System.out.println("What's your team name?\n");
-        teamName = sc.nextLine();
-        System.out.println("What's the team size?\n");
-        int teamSize = sc.nextInt();
-        //try {
-            for (int i = Math.abs(teamSize - 5); i <= 5; i++) {
-                player.createPlayer(team);
-                System.out.println(player);
+        System.out.println("Current team name is: " + teamName + ", do you want to change your team name?");
 
+        if (sc.nextLine().equalsIgnoreCase("y")) {
+            System.out.println("What's your new team name?\n");
+            teamName = sc.nextLine();
+            System.out.println("What's the team size?\n");
+            int teamSize = sc.nextInt();
+            if (teamSize <= 5 && teamSize >= 2) {
+                for (int i = Math.abs(teamSize - 5); i < 5 && i >= 2; i++) {
+                    player.createPlayer(team);
+                    System.out.println(player);
+                }
+            } else {
+                System.out.println("Invalid team size - must be between 2-5.\n");
+                createTeam();
             }
+        } else {
+            System.out.println("What's the team size?\n");
+            int teamSize = sc.nextInt();
+            if (teamSize <= 5 && teamSize >= 2) {
+                for (int i = Math.abs(teamSize - 5); i < 5 && i >= 2; i++) {
+                    player.createPlayer(team);
+                    System.out.println(player);
+                }
+            } else {
+                System.out.println("Invalid team size - must be between 2-5.\n");
+                createTeam();
+            }
+        }
 
 
-            //Team team = new Team(teamName);
+        //Team team = new Team(teamName);
             /*
         } catch (NullPointerException e) {
             System.out.println("Invalid team size - must be between 2-5.");
@@ -36,8 +54,7 @@ public class Team {
              */
     }
 
-    public String getTeamName()
-    {
+    public String getTeamName() {
         return teamName;
     }
 
