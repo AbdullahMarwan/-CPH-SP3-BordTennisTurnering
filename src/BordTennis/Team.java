@@ -12,7 +12,11 @@ public class Team
 
     public Team(String teamName)
     {
+<<<<<<< Updated upstream
         this.teamName=teamName;
+=======
+        this.teamName = teamName;
+>>>>>>> Stashed changes
     }
 
     public void createTeam()
