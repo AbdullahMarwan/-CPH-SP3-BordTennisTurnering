@@ -12,7 +12,7 @@ public class UI {
         return userInput;
     }
 
-    public void teamList(ArrayList<Team> arrayList){
+    public void teamList(ArrayList<Team> arrayList) {
         String input = sc.nextLine();
         System.out.println("What's your team name?\n");
         Team team = new Team(input);
@@ -20,9 +20,21 @@ public class UI {
     }
 
     private void Options(int choice) {
-        switch (choice){
+        switch (choice) {
             case 1: // Show all teams signed up
+                System.out.println("All teams signed up: ");
+                break;
+            case 2: // Show all team's positions in the tournament
+                System.out.println("Positions of following teams: ");
+                break;
 
+            case 3: //Show game program where all teams are shown and when they have to play
+                System.out.println("Overview of entire game program: ");
+                break;
+
+            case 4: //Show when next game is played
+                System.out.println("Next game: ");
+                break;
         }
 
     }
