@@ -13,10 +13,9 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public void createTeam() {
+    public void createTeam(ArrayList<Player> team) {
         System.out.println("What's your team name?\n");
         String teamName = sc.nextLine();
-        this.teamName = teamName;
         System.out.println("How many players are on your team?\n");
         int teamSize = sc.nextInt();
         try {
