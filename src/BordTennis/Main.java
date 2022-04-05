@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args)
     {
+        Tournament tournament = new Tournament();
 
-        Team team = new Team("don domingo");
-        team.createTeam();
+        tournament.initializeTeams();
     }
 }
