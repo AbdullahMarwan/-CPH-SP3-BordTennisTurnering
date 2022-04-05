@@ -19,6 +19,7 @@ public class Player {
         arrayList.add(player);
     }
 
+
     @Override
     public String toString() {
         return "Name: " + playerName;
