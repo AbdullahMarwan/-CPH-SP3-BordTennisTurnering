@@ -35,6 +35,10 @@ public class UI {
             case 4: //Show when next game is played
                 System.out.println("Next game: ");
                 break;
+
+            case 5: //Change team name
+                System.out.println("Change team name from: " + " to: " + " ");
+                break;
         }
 
     }
