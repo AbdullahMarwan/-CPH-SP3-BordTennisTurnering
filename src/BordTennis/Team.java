@@ -28,7 +28,8 @@ public class Team {
         }
     }
 
-    public String getTeamName() {
+    public String getTeamName()
+    {
         return teamName;
     }
 }
