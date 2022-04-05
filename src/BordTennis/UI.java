@@ -5,22 +5,30 @@ import java.util.Scanner;
 
 public class UI {
 
-    Player player;
+    String userInput;
     Scanner sc = new Scanner(System.in);
-    boolean input = true;
 
-    private ArrayList<Team> teamList = new ArrayList<>();
-
-
-    private void getUserInput(String msg) {
-        System.out.println(msg);
+    public String getUserInput(String msg) {
+        return userInput;
     }
 
-    private void Options() {
+    public void teamList(ArrayList<Team> arrayList){
+        String input = sc.nextLine();
+        System.out.println("What's your team name?\n");
+        Team team = new Team(input);
+        arrayList.add(team);
+    }
+
+    private void Options(int choice) {
+        switch (choice){
+            case 1: // Show all teams signed up
+
+        }
 
     }
 
     public void inputFromUser() {
+        sc.next();
 
     }
 }
