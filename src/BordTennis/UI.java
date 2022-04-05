@@ -52,6 +52,5 @@ public class UI {
 
     public void inputFromUser() {
         sc.next();
-
     }
 }

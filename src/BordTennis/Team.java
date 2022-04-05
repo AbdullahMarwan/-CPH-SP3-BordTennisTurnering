@@ -7,8 +7,6 @@ public class Team {
     Scanner sc = new Scanner(System.in);
     String teamName;
     ArrayList<Player> team = new ArrayList<>();
-    Player player;
-
 
     public Team(String teamName) {
         this.teamName = teamName;
@@ -24,7 +22,8 @@ public class Team {
             int teamSize = sc.nextInt();
             if (teamSize <= 5 && teamSize >= 2) {
                 for (int i = Math.abs(teamSize - 5); i < 5 && i >= 2; i++) {
-                    player.createPlayer(team);
+                    //Player player = new Player().createPlayer(team);
+                    Player player = new Player();
                     System.out.println(player);
                 }
             } else {
@@ -36,7 +35,7 @@ public class Team {
             int teamSize = sc.nextInt();
             if (teamSize <= 5 && teamSize >= 2) {
                 for (int i = Math.abs(teamSize - 5); i < 5 && i >= 2; i++) {
-                    player.createPlayer(team);
+                    Player player = new Player();
                     System.out.println(player);
                 }
             } else {
@@ -60,5 +59,9 @@ public class Team {
 
     public ArrayList<Player> getTeam() {
         return team;
+    }
+
+    public String toString() {
+        return "Team name: " + this.teamName;
     }
 }

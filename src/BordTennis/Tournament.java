@@ -18,6 +18,9 @@ public class Tournament {
 
         team1.createTeam();
         teamList.add(team1);
+
+        ui.teamList(teamList); //Quick debug
+
         team2.createTeam();
         teamList.add(team2);
         team3.createTeam();
@@ -34,6 +37,7 @@ public class Tournament {
         teamList.add(team8);
 
         ui.teamList(teamList);
+
     }
 
 

@@ -12,13 +12,11 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public void createPlayer(ArrayList<Player> arrayList) {
+    public Player() {
         System.out.println("What's your name?\n");
         String name = sc.nextLine();
-        Player player = new Player(name);
-        arrayList.add(player);
+        this.playerName = name;
     }
-
 
     @Override
     public String toString() {
