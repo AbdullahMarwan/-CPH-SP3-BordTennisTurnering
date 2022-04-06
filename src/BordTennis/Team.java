@@ -48,7 +48,8 @@ public class Team {
         return teamName;
     }
 
-    public ArrayList<Player> getTeam() {
+    public ArrayList<Player> getTeam()
+    {
         return team;
     }
 
