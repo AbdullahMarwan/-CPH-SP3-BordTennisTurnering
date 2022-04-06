@@ -7,6 +7,8 @@ public class Team {
     Scanner sc = new Scanner(System.in);
     String teamName;
     ArrayList<Player> team = new ArrayList<>();
+    int points = 0;
+    boolean isKnockOut = false;
 
     public Team(String teamName) {
         this.teamName = teamName;
