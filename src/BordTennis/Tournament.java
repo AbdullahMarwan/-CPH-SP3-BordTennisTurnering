@@ -43,7 +43,7 @@ public class Tournament {
 
     }
 
-    private void Options(int choice) {
+    public void Options(int choice) {
         switch (choice) {
             case 1: // Show all teams signed up
                 System.out.println("All teams signed up: ");
@@ -63,6 +63,7 @@ public class Tournament {
 
             case 5: //Change team name
                 System.out.println("Change team name from: " + " to: " + " ");
+
                 //team1.changeTeamName();
                 break;
         }

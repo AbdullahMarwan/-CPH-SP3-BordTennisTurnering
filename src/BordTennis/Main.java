@@ -9,5 +9,7 @@ public class Main {
         Tournament tournament = new Tournament();
 
         tournament.initializeTeams();
+
+        //tournament.Options();
     }
 }
