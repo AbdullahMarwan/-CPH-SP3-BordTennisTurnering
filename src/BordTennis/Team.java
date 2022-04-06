@@ -21,7 +21,7 @@ public class Team {
             System.out.println("What's the team size?\n");
             int teamSize = sc.nextInt();
             if (teamSize <= 5 && teamSize >= 2) {
-                for (int i = Math.abs(teamSize - 5); i < 5 && i >= 2; i++) {
+                for (int i = 0; i<teamSize; i++) {
                     //Player player = new Player().createPlayer(team);
                     Player player = new Player();
                     System.out.println(player);
