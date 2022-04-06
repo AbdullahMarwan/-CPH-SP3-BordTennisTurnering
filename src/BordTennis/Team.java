@@ -12,36 +12,33 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public void createTeam() {
+    public void changeTeamName() {
         System.out.println("Current team name is: " + teamName + ", do you want to change your team name?\nPress Y for 'Yes', N for 'No':");
 
         if (sc.nextLine().equalsIgnoreCase("y")) {
             System.out.println("\nWhat's your new team name?");
             teamName = sc.nextLine();
-            System.out.println("\nWhat's the team size?");
-            int teamSize = sc.nextInt();
-            if (teamSize <= 5 && teamSize >= 2) {
-                for (int i = 0; i < teamSize; i++) {
-                    Player player = new Player();
-                    team.add(player);
-                }
-            } else {
-                System.out.println("\n Invalid team size - must be between 2-5.");
-                createTeam();
+        }
+    }
+
+    public void teamMaker() {
+        changeTeamName();
+        createTeam();
+    }
+
+    public void createTeam() {
+        System.out.println("\nWhat's the team size?");
+        int teamSize = sc.nextInt();
+        if (teamSize <= 5 && teamSize >= 2) {
+            for (int i = 0; i < teamSize; i++) {
+                Player player = new Player();
+                team.add(player);
             }
         } else {
-            System.out.println("\nWhat's the team size?");
-            int teamSize = sc.nextInt();
-            if (teamSize <= 5 && teamSize >= 2) {
-                for (int i = 0; i < teamSize; i++) {
-                    Player player = new Player();
-                    team.add(player);
-                }
-            } else {
-                System.out.println("\nInvalid team size - must be between 2-5.");
-                createTeam();
-            }
+            System.out.println("\nInvalid team size - must be between 2-5.");
+            createTeam();
         }
+
     }
 
     public String getTeamName() {

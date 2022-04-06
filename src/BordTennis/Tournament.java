@@ -16,27 +16,27 @@ public class Tournament {
         Team team7 = new Team("Team7");
         Team team8 = new Team("Team8");
 
-        team1.createTeam();
+        team1.teamMaker();
         teamList.add(team1);
 
         ui.teamList(teamList); //Quick debug
 
-        team2.createTeam();
+        team2.teamMaker();
         teamList.add(team2);
 
         ui.teamList(teamList); //Quick debug
 
-        team3.createTeam();
+        team3.teamMaker();
         teamList.add(team3);
-        team4.createTeam();
+        team4.teamMaker();
         teamList.add(team4);
-        team5.createTeam();
+        team5.teamMaker();
         teamList.add(team5);
-        team6.createTeam();
+        team6.teamMaker();
         teamList.add(team6);
-        team7.createTeam();
+        team7.teamMaker();
         teamList.add(team7);
-        team8.createTeam();
+        team8.teamMaker();
         teamList.add(team8);
 
         ui.teamList(teamList);
@@ -63,7 +63,7 @@ public class Tournament {
 
             case 5: //Change team name
                 System.out.println("Change team name from: " + " to: " + " ");
-
+                //team1.changeTeamName();
                 break;
         }
 
