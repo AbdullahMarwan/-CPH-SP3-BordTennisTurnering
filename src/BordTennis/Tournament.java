@@ -23,6 +23,9 @@ public class Tournament {
 
         team2.createTeam();
         teamList.add(team2);
+
+        ui.teamList(teamList); //Quick debug
+
         team3.createTeam();
         teamList.add(team3);
         team4.createTeam();

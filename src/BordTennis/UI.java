@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
-
     String userInput;
     Scanner sc = new Scanner(System.in);
 
@@ -13,17 +12,9 @@ public class UI {
     }
 
     public void teamList(ArrayList<Team> arrayList) {
-
         for (Team a : arrayList) {
             System.out.println(a);
         }
-
-        /*
-        String input = sc.nextLine();
-        System.out.println("What's your team name?\n");
-        Team team = new Team(input);
-        arrayList.add(team);
-         */
     }
 
     private void Options(int choice) {
