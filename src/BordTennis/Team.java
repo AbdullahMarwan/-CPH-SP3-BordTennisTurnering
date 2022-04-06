@@ -9,6 +9,7 @@ public class Team {
     ArrayList<Player> team = new ArrayList<>();
     int points = 0;
     boolean isKnockOut = false;
+    boolean win = false;
 
     public Team(String teamName) {
         this.teamName = teamName;

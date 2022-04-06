@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Tournament {
     UI ui = new UI();
+    KnockOut knockOut = new KnockOut();
     ArrayList<Team> teamList = new ArrayList<>();
 
     public void initializeTeams(){
@@ -40,7 +41,10 @@ public class Tournament {
         teamList.add(team8);
 
         ui.teamList(teamList);
+    }
 
+    public void playMatches (){
+         knockOut.addPointsToWinner(teamList);
     }
 
     public void Options(int choice) {
