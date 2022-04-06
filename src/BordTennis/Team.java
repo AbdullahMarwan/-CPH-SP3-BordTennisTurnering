@@ -62,6 +62,11 @@ public class Team {
     }
 
     public String toString() {
-        return "Team name: " + this.teamName;
+        String string = "Team name: " + this.teamName+"\n";
+        for (Player p:team)
+        {
+            string+="Player name: "+p.playerName+"\n";
+        }
+        return string;
     }
 }
