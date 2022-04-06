@@ -43,5 +43,30 @@ public class Tournament {
 
     }
 
+    private void Options(int choice) {
+        switch (choice) {
+            case 1: // Show all teams signed up
+                System.out.println("All teams signed up: ");
+                ui.teamList(teamList);
+                break;
+            case 2: // Show all team's positions in the tournament
+                System.out.println("Positions of following teams: ");
+                break;
+
+            case 3: //Show game program where all teams are shown and when they have to play
+                System.out.println("Overview of entire game program: ");
+                break;
+
+            case 4: //Show when next game is played
+                System.out.println("Next game: ");
+                break;
+
+            case 5: //Change team name
+                System.out.println("Change team name from: " + " to: " + " ");
+
+                break;
+        }
+
+    }
 
 }
