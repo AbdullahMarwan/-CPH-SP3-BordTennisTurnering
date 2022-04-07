@@ -1,8 +1,6 @@
 package BordTennis;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class KnockOut {
     ArrayList<Team> roundOne = new ArrayList<>();

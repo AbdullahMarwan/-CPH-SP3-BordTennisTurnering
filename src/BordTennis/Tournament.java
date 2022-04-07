@@ -22,9 +22,6 @@ public class Tournament {
 
         team1.teamMaker();
         teamList.add(team1);
-
-        ui.teamList(teamList); //Quick debug
-
         team2.teamMaker();
         teamList.add(team2);
         team3.teamMaker();
@@ -60,6 +57,7 @@ public class Tournament {
             String teamName = values[0];
             Team team = new Team(teamName, 0);
 
+            teamList.add(team);
             //Checks amount of players on a line in TeamData
             switch (values.length) {
                 case 3 -> amountOfPlayersInTeam = 2;

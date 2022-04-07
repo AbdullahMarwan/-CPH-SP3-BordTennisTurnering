@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         Tournament tournament = new Tournament();
         Scanner sc = new Scanner(System.in);
@@ -26,6 +25,5 @@ public class Main {
         }
 
         tournament.playMatches();
-
     }
 }
