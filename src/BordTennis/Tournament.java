@@ -7,15 +7,15 @@ public class Tournament {
     KnockOut knockOut = new KnockOut();
     ArrayList<Team> teamList = new ArrayList<>();
 
-    public void initializeTeams(){
+    public void initializeTeams() {
         Team team1 = new Team("Team1", 5);
         Team team2 = new Team("Team2", 8);
         Team team3 = new Team("Team3", 6);
-        Team team4 = new Team("Team4",1);
-        Team team5 = new Team("Team5",9);
-        Team team6 = new Team("Team6",12);
-        Team team7 = new Team("Team7",25);
-        Team team8 = new Team("Team8",4);
+        Team team4 = new Team("Team4", 1);
+        Team team5 = new Team("Team5", 9);
+        Team team6 = new Team("Team6", 12);
+        Team team7 = new Team("Team7", 25);
+        Team team8 = new Team("Team8", 4);
 
         team1.teamMaker();
         teamList.add(team1);
@@ -43,37 +43,32 @@ public class Tournament {
         ui.teamList(teamList);
     }
 
-    public void playMatches (){
-         knockOut.addPointsToWinner(teamList);
+    public void playMatches() {
+        knockOut.addPointsToWinner(teamList);
+        knockOut.addTeamsToRounds(teamList);
     }
 
     public void Options(int choice) {
         switch (choice) {
-            case 1: // Show all teams signed up
+            case 1 -> { // Show all teams signed up
                 System.out.println("All teams signed up: ");
                 ui.teamList(teamList);
-                break;
-            case 2: // Show all team's positions in the tournament
+            }
+            case 2 -> { // Show all team's positions in the tournament
                 System.out.println("Positions of following teams: ");
                 teamPointPositions(teamList);
-                break;
-
-            case 3: //Show game program where all teams are shown and when they have to play
-                System.out.println("Overview of entire game program: ");
-                break;
-
-            case 4: //Show when next game is played
-                System.out.println("Next game: ");
-                break;
-
-            case 5: //Change team name
-                System.out.println("Change team name from: " + " to: " + " ");
-
-                //team1.changeTeamName();
-                break;
+            }
+            case 3 -> //Show game program where all teams are shown and when they have to play
+                    System.out.println("Overview of entire game program: ");
+            case 4 -> //Show when next game is played
+                    System.out.println("Next game: ");
+            case 5 -> //Change team name
+                    System.out.println("Change team name from: " + " to: " + " ");
+            //team1.changeTeamName();
         }
 
     }
+
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;
         boolean sorted = false;
@@ -89,9 +84,8 @@ public class Tournament {
                 }
             }
         }
-        for(Team t: teamList)
-        {
-            System.out.println("Team "+t.teamName+" got "+t.points+" points.");
+        for (Team t : teamList) {
+            System.out.println("Team " + t.teamName + " got " + t.points + " points.");
         }
     }
 }
