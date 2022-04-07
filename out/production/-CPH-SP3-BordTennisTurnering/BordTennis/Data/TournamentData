@@ -1,33 +1,51 @@
 [
-Team name: Team1
-Player name: n
-Player name: n
-, 
-Team name: Team2
-Player name: n
-Player name: n
-, 
-Team name: Team3
-Player name: 2
-Player name: 2
-, 
-Team name: Team4
-Player name: 2
-Player name: 2
-, 
-Team name: Team5
-Player name: n
-Player name: n
-, 
-Team name: Team6
-Player name: n
-Player name: n
-, 
-Team name: Team7
-Player name: n
-Player name: n
-, 
-Team name: Team8
-Player name: n
-Player name: n
-]
+Team name: Team 1
+Player name: Player1
+Player name: Player2
+Player name: Player3
+Player name: Player4
+Player name: Player5
+Team points: 4
+Is team Knockout? false, 
+Team name: Team 2
+Player name: PlayerONE
+Player name: PlayerTWO
+Player name: PlayerTHREE
+Team points: 7
+Is team Knockout? false, 
+Team name: Team 3
+Player name: T3N1
+Player name: T3N2
+Player name: T3N3
+Team points: 1
+Is team Knockout? false, 
+Team name: Team 4
+Player name: T4N1
+Player name: T4N2
+Player name: T4N3
+Team points: 2
+Is team Knockout? false, 
+Team name: Team 5
+Player name: T5N1
+Player name: T5N2
+Player name: T5N3
+Team points: 3
+Is team Knockout? false, 
+Team name: Team 6
+Player name: T6N1
+Player name: T6N2
+Player name: T6N3
+Team points: 4
+Is team Knockout? false, 
+Team name: Team 7
+Player name: T7N1
+Player name: T7N2
+Player name: T7N3
+Team points: 5
+Is team Knockout? false, 
+Team name: Team 8
+Player name: T8N1
+Player name: T8N2
+Player name: T8N3
+Team points: 6
+Is team Knockout? false]
