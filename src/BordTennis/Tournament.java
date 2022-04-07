@@ -8,14 +8,14 @@ public class Tournament {
     ArrayList<Team> teamList = new ArrayList<>();
 
     public void initializeTeams(){
-        Team team1 = new Team("Team1");
-        Team team2 = new Team("Team2");
-        Team team3 = new Team("Team3");
-        Team team4 = new Team("Team4");
-        Team team5 = new Team("Team5");
-        Team team6 = new Team("Team6");
-        Team team7 = new Team("Team7");
-        Team team8 = new Team("Team8");
+        Team team1 = new Team("Team1", 5);
+        Team team2 = new Team("Team2", 8);
+        Team team3 = new Team("Team3", 6);
+        Team team4 = new Team("Team4",1);
+        Team team5 = new Team("Team5",9);
+        Team team6 = new Team("Team6",12);
+        Team team7 = new Team("Team7",25);
+        Team team8 = new Team("Team8",4);
 
         team1.teamMaker();
         teamList.add(team1);
@@ -73,5 +73,24 @@ public class Tournament {
         }
 
     }
+    public void teamPointPositions(ArrayList<Team> teamList) {
+        Team temp;
+        boolean sorted = false;
 
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < teamList.size() - 1; i++) {
+                if (teamList.get(i).comparePoints(teamList.get(i + 1)) > 0) {
+                    temp = teamList.get(i);
+                    teamList.set(i, teamList.get(i + 1));
+                    teamList.set(i + 1, temp);
+                    sorted = false;
+                }
+            }
+        }
+        for(Team t: teamList)
+        {
+            System.out.println("Team "+t.teamName+" got "+t.points+" points.");
+        }
+    }
 }

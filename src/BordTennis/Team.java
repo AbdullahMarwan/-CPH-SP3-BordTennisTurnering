@@ -11,7 +11,8 @@ public class Team {
     boolean isKnockOut = false;
     boolean win = false;
 
-    public Team(String teamName) {
+    public Team(String teamName, int points) {
+        this.points=points;
         this.teamName = teamName;
     }
 
@@ -59,5 +60,16 @@ public class Team {
             string += "Player name: " + p.playerName + "\n";
         }
         return string;
+    }
+
+    public int comparePoints(Team team) {
+        int res = 0;
+        if (this.points > team.points) {
+            res =- 1;
+        }
+        if (this.points < team.points) {
+            res = 1;
+        }
+        return res;
     }
 }
