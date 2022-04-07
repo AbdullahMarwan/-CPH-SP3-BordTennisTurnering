@@ -16,7 +16,7 @@ public class Team {
     }
 
     public void changeTeamName() {
-        System.out.println("Current team name is: " + teamName + ", do you want to change your team name?\nPress Y for 'Yes', N for 'No':");
+        System.out.println("\nCurrent team name is: " + teamName + ", do you want to change your team name?\nPress Y for 'Yes', N for 'No':");
 
         if (sc.nextLine().equalsIgnoreCase("y")) {
             System.out.println("\nWhat's your new team name?");

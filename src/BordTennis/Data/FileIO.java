@@ -4,6 +4,8 @@ import BordTennis.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +17,6 @@ public class FileIO implements IO {
         if (gameData != null) {
             return true;
         }
-
         return false;
     }
 
@@ -35,7 +36,6 @@ public class FileIO implements IO {
         }
         return data;
     }
-
 
     @Override
     public ArrayList<String> readTeamData(String path) {

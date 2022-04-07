@@ -1,8 +1,8 @@
 package BordTennis;
 
-
 import BordTennis.Data.FileIO;
-
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -12,12 +12,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         FileIO fileIO = new FileIO();
         UI ui = new UI();
-
+/*
         if (fileIO.isDataAvailable()) {
             tournament.addPlayersFromData();
         } else {
             tournament.initializeTeams();
         }
+
+ */
+
+        tournament.initializeTeams();
 
         System.out.println("Enter OPTIONS by pressing 'O'\n");
         if (sc.nextLine().equalsIgnoreCase("O")) {
@@ -25,5 +29,17 @@ public class Main {
         }
 
         tournament.playMatches();
+
+
+        try {
+            FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");
+            myWriter.write(String.valueOf(tournament.teamList));
+            myWriter.close();
+
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
     }
 }
