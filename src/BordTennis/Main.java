@@ -3,11 +3,14 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.util.Scanner;
+
 public class Main {
 
 
     public static void main(String[] args) {
         Tournament tournament = new Tournament();
+        Scanner sc = new Scanner(System.in);
         FileIO fileIO = new FileIO();
         UI ui = new UI();
 
@@ -17,7 +20,11 @@ public class Main {
             tournament.initializeTeams();
         }
 
-        ui.Options(choice);
+        System.out.println("Enter OPTIONS by pressing 'O'\n");
+        if (sc.nextLine().equalsIgnoreCase("O")) {
+
+            ui.Options(ui.getUserInput());
+        }
 
         tournament.playMatches();
 

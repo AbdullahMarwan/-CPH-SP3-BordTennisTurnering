@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class UI {
     String userInput;
-    Scanner sc = new Scanner(System.in);
-    UI ui = new UI();
     KnockOut knockOut = new KnockOut();
     Tournament tournament = new Tournament();
 
@@ -14,7 +12,7 @@ public class UI {
         switch (choice) {
             case 1 -> { // Show all teams signed up
                 System.out.println("All teams signed up: ");
-                ui.teamList(tournament.teamList);
+                teamList(tournament.teamList);
             }
             case 2 -> { // Show all team's positions in the tournament
                 System.out.println("Positions of following teams: ");
@@ -33,18 +31,20 @@ public class UI {
 
     }
 
-    public String getUserInput(String msg) {
-
-        return userInput;
+    public int getUserInput() {
+        Scanner sc = new Scanner(System.in);
+        int input = Integer.parseInt(sc.nextLine());
+        System.out.println("\nIn OPTIONS you have 4 choices: \n" +
+                "1: Show all teams signed up\n" +
+                "2: Show all team's positions in the tournament\n" +
+                "3: Show game program\n" +
+                "4: Show when next game is played\n");
+        return input;
     }
 
     public void teamList(ArrayList<Team> arrayList) {
         for (Team a : arrayList) {
             System.out.println(a);
         }
-    }
-
-    public void inputFromUser() {
-        sc.next();
     }
 }
