@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class UI {
     String userInput;
-    KnockOut knockOut = new KnockOut();
-    Tournament tournament = new Tournament();
+    //KnockOut knockOut = new KnockOut();
+    //Tournament tournament = new Tournament();
 
+    /*
     public void Options(int choice) {
         switch (choice) {
             case 1 -> { // Show all teams signed up
@@ -30,10 +31,11 @@ public class UI {
         }
 
     }
+     */
 
-    public int getUserInput() {
+    public String getUserInput() {
         Scanner sc = new Scanner(System.in);
-        int input = Integer.parseInt(sc.nextLine());
+        String input = sc.nextLine();
         System.out.println("\nIn OPTIONS you have 4 choices: \n" +
                 "1: Show all teams signed up\n" +
                 "2: Show all team's positions in the tournament\n" +

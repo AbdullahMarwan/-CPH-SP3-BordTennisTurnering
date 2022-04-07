@@ -76,31 +76,27 @@ public class Tournament {
         }
     }
 
-    /*
-    public void Options(int choice) {
+
+    public void Options(String choice) {
+        //System.out.println("Test");
         switch (choice) {
-            case 1 -> { // Show all teams signed up
+            case "1" -> { // Show all teams signed up
                 System.out.println("All teams signed up: ");
                 ui.teamList(teamList);
             }
-            case 2 -> { // Show all team's positions in the tournament
+            case "2" -> { // Show all team's positions in the tournament
                 System.out.println("Positions of following teams: ");
                 teamPointPositions(teamList);
             }
-            case 3 -> { //Show game program where all teams are shown and when they have to play
+            case "3" -> { //Show game program where all teams are shown and when they have to play
                 System.out.println("Overview of entire game program: ");
                 knockOut.gamePlan();
             }
-            case 4 -> //Show when next game is played
+            case "4" -> //Show when next game is played
                     System.out.println("Next game: ");
-            case 5 -> //Change team name
-                    System.out.println("Change team name from: " + " to: " + " ");
-            //team1.changeTeamName();
         }
 
     }
-
-     */
 
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;

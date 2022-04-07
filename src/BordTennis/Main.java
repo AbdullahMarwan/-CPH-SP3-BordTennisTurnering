@@ -22,8 +22,7 @@ public class Main {
 
         System.out.println("Enter OPTIONS by pressing 'O'\n");
         if (sc.nextLine().equalsIgnoreCase("O")) {
-
-            ui.Options(ui.getUserInput());
+            tournament.Options(ui.getUserInput());
         }
 
         tournament.playMatches();
