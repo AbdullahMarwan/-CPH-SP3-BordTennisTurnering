@@ -46,7 +46,6 @@ public class Tournament {
     public void playMatches() {
         knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
-        knockOut.gamePlan();
     }
 
     public void addPlayersFromData() {
@@ -56,12 +55,10 @@ public class Tournament {
 
         for (String s : data) {
             System.out.println(s);
-            String[] values = s.split(": ");
-            //Team 1: Player1: Player2: Player3: Player4: Player5
+            String[] values = s.split(": "); //Team 1: Player1: Player2: Player3: Player4: Player5
 
             String teamName = values[0];
             Team team = new Team(teamName, 0);
-
 
             //Checks amount of players on a line in TeamData
             switch (values.length) {
@@ -72,7 +69,7 @@ public class Tournament {
             }
 
             for (int i = 0; i < amountOfPlayersInTeam; i++) {
-                Player player = new Player(values[i+1]);
+                Player player = new Player(values[i + 1]);
                 team.addPlayersToTeam(player);
             }
 
@@ -89,8 +86,10 @@ public class Tournament {
                 System.out.println("Positions of following teams: ");
                 teamPointPositions(teamList);
             }
-            case 3 -> //Show game program where all teams are shown and when they have to play
-                    System.out.println("Overview of entire game program: ");
+            case 3 -> { //Show game program where all teams are shown and when they have to play
+                System.out.println("Overview of entire game program: ");
+                knockOut.gamePlan();
+            }
             case 4 -> //Show when next game is played
                     System.out.println("Next game: ");
             case 5 -> //Change team name
