@@ -11,10 +11,8 @@ public class Team {
     boolean isKnockOut = false;
     boolean win = false;
 
-    public Team(String teamName, int points, boolean isKnockOut) {
-        this.points = points;
+    public Team(String teamName) {
         this.teamName = teamName;
-        this.isKnockOut = isKnockOut;
     }
 
     public void changeTeamName() {
@@ -50,6 +48,30 @@ public class Team {
         team.add(player);
     }
 
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public boolean isKnockOut() {
+        return isKnockOut;
+    }
+
+    public void setKnockOut(boolean knockOut) {
+        isKnockOut = knockOut;
+    }
+
+    public boolean isWin() {
+        return win;
+    }
+
+    public void setWin(boolean win) {
+        this.win = win;
+    }
+
     public String getTeamName() {
         return teamName;
     }
@@ -63,6 +85,9 @@ public class Team {
         for (Player p : team) {
             string += "Player name: " + p.playerName + "\n";
         }
+        string += "Team points: " + points;
+        string += "\nIs team Knockout? " + isKnockOut;
+
         return string;
     }
 

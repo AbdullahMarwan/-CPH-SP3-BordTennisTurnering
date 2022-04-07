@@ -11,14 +11,14 @@ public class Tournament {
     FileIO fileIO = new FileIO();
 
     public void initializeTeams() {
-        Team team1 = new Team("Team1", 5,false);
-        Team team2 = new Team("Team2", 8,false);
-        Team team3 = new Team("Team3", 6,false);
-        Team team4 = new Team("Team4", 1,false);
-        Team team5 = new Team("Team5", 9,false);
-        Team team6 = new Team("Team6", 12,false);
-        Team team7 = new Team("Team7", 25,false);
-        Team team8 = new Team("Team8", 4,false);
+        Team team1 = new Team("Team1");
+        Team team2 = new Team("Team2");
+        Team team3 = new Team("Team3");
+        Team team4 = new Team("Team4");
+        Team team5 = new Team("Team5");
+        Team team6 = new Team("Team6");
+        Team team7 = new Team("Team7");
+        Team team8 = new Team("Team8");
 
         team1.teamMaker();
         teamList.add(team1);
@@ -52,18 +52,18 @@ public class Tournament {
 
         for (String s : data) {
             System.out.println(s);
-            String[] values = s.split(": "); //Team 1: Player1: Player2: Player3: Player4: Player5
+            String[] values = s.split(", ");
 
             String teamName = values[0];
-            Team team = new Team(teamName, 0,false);
-
+            Team team = new Team(teamName);
             teamList.add(team);
+
             //Checks amount of players on a line in TeamData
-            switch (values.length) {
-                case 3 -> amountOfPlayersInTeam = 2;
-                case 4 -> amountOfPlayersInTeam = 3;
-                case 5 -> amountOfPlayersInTeam = 4;
-                case 6 -> amountOfPlayersInTeam = 5;
+            switch (values.length - 3) {
+                case 2 -> amountOfPlayersInTeam = 2;
+                case 3 -> amountOfPlayersInTeam = 3;
+                case 4 -> amountOfPlayersInTeam = 4;
+                case 5 -> amountOfPlayersInTeam = 5;
             }
 
             for (int i = 0; i < amountOfPlayersInTeam; i++) {
@@ -71,7 +71,13 @@ public class Tournament {
                 team.addPlayersToTeam(player);
             }
 
+            int teamPoints = Integer.parseInt(values[amountOfPlayersInTeam + 1]);
+            team.setPoints(teamPoints);
+
+            boolean isKnockOut = Boolean.parseBoolean(values[values.length - 1]);
+            team.setKnockOut(isKnockOut);
         }
+
     }
 
 
