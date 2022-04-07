@@ -76,6 +76,7 @@ public class Tournament {
         }
     }
 
+    /*
     public void Options(int choice) {
         switch (choice) {
             case 1 -> { // Show all teams signed up
@@ -98,6 +99,8 @@ public class Tournament {
         }
 
     }
+
+     */
 
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;
