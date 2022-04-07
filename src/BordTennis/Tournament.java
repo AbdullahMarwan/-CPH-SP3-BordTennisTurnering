@@ -1,11 +1,14 @@
 package BordTennis;
 
+import BordTennis.Data.FileIO;
+
 import java.util.ArrayList;
 
 public class Tournament {
     UI ui = new UI();
     KnockOut knockOut = new KnockOut();
     ArrayList<Team> teamList = new ArrayList<>();
+    FileIO fileIO = new FileIO();
 
     public void initializeTeams() {
         Team team1 = new Team("Team1", 5);
@@ -24,9 +27,6 @@ public class Tournament {
 
         team2.teamMaker();
         teamList.add(team2);
-
-        ui.teamList(teamList); //Quick debug
-
         team3.teamMaker();
         teamList.add(team3);
         team4.teamMaker();
@@ -47,6 +47,36 @@ public class Tournament {
         knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
         knockOut.gamePlan();
+    }
+
+    public void addPlayersFromData() {
+        ArrayList<String> data = new ArrayList<>();
+        data = fileIO.readGameData();
+        int amountOfPlayersInTeam = 0;
+
+        for (String s : data) {
+            System.out.println(s);
+            String[] values = s.split(": ");
+            //Team 1: Player1: Player2: Player3: Player4: Player5
+
+            String teamName = values[0];
+            Team team = new Team(teamName, 0);
+
+
+            //Checks amount of players on a line in TeamData
+            switch (values.length) {
+                case 3 -> amountOfPlayersInTeam = 2;
+                case 4 -> amountOfPlayersInTeam = 3;
+                case 5 -> amountOfPlayersInTeam = 4;
+                case 6 -> amountOfPlayersInTeam = 5;
+            }
+
+            for (int i = 0; i < amountOfPlayersInTeam; i++) {
+                Player player = new Player(values[i+1]);
+                team.addPlayersToTeam(player);
+            }
+
+        }
     }
 
     public void Options(int choice) {

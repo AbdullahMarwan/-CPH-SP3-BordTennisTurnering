@@ -9,6 +9,7 @@ public class Main {
 
         //tournament.Options();
 
+        tournament.addPlayersFromData();
         tournament.initializeTeams();
         tournament.playMatches();
 

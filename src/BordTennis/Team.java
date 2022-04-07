@@ -12,7 +12,7 @@ public class Team {
     boolean win = false;
 
     public Team(String teamName, int points) {
-        this.points=points;
+        this.points = points;
         this.teamName = teamName;
     }
 
@@ -45,12 +45,15 @@ public class Team {
 
     }
 
+    public void addPlayersToTeam(Player player) {
+        team.add(player);
+    }
+
     public String getTeamName() {
         return teamName;
     }
 
-    public ArrayList<Player> getTeam()
-    {
+    public ArrayList<Player> getTeam() {
         return team;
     }
 
@@ -65,7 +68,7 @@ public class Team {
     public int comparePoints(Team team) {
         int res = 0;
         if (this.points > team.points) {
-            res =- 1;
+            res = -1;
         }
         if (this.points < team.points) {
             res = 1;
