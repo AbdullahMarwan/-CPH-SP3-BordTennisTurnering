@@ -10,7 +10,6 @@ public class Main {
 
         tournament.initializeTeams();
 
-        tournament.teamPointPositions(tournament.teamList);
         //tournament.Options();
     }
 }

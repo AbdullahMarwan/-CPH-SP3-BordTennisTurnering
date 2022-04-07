@@ -55,6 +55,7 @@ public class Tournament {
                 break;
             case 2: // Show all team's positions in the tournament
                 System.out.println("Positions of following teams: ");
+                teamPointPositions(teamList);
                 break;
 
             case 3: //Show game program where all teams are shown and when they have to play
