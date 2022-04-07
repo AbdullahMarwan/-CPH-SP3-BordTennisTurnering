@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IO {
 
-    ArrayList<String> readGameData(String path);
+    ArrayList<String> readGameData();
 
     ArrayList<String> readTeamData(String path);
 
