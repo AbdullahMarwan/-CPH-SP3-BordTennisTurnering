@@ -23,29 +23,14 @@ public class KnockOut {
     //Method to add each NON-knockouted team to the next rounds
     public void addTeamsToRounds(ArrayList<Team> teamList) {
         for (Team t : teamList) {
-            switch (roundNr) {
-                case 1 -> {
-                    if (!t.isKnockOut) {
-                        roundOne.add(t);
-                    }
-                }
-                case 2 -> {
-                    if (!t.isKnockOut) {
-                        quarterFinal.add(t);
-                    }
-                }
-                case 3 -> {
-                    if (!t.isKnockOut) {
-                        semiFinal.add(t);
-                    }
-                }
-                case 4 -> {
-                    if (!t.isKnockOut) {
-                        finalGame.add(t);
-                    }
+            if (!t.isKnockOut) {
+                switch (roundNr) {
+                    case 1 -> roundOne.add(t);
+                    case 2 -> quarterFinal.add(t);
+                    case 3 -> semiFinal.add(t);
+                    case 4 -> finalGame.add(t);
                 }
             }
-
         }
     }
 
