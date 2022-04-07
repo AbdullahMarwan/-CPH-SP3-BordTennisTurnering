@@ -76,7 +76,6 @@ public class Tournament {
 
 
     public void Options(String choice) {
-        //System.out.println("Test");
         switch (choice) {
             case "1" -> { // Show all teams signed up
                 System.out.println("All teams signed up: ");
@@ -91,7 +90,7 @@ public class Tournament {
                 knockOut.gamePlan();
             }
             case "4" -> //Show when next game is played
-                    System.out.println("Next game: ");
+                    System.out.println("Next game: is played shortly");
         }
 
     }
