@@ -46,6 +46,7 @@ public class Tournament {
     public void playMatches() {
         knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
+        knockOut.gamePlan();
     }
 
     public void Options(int choice) {

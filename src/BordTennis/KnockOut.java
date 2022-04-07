@@ -35,7 +35,26 @@ public class KnockOut {
     }
 
     public void gamePlan() {
+        ArrayList<Team> tempArrayList = new ArrayList<>();
 
+        switch (roundNr) {
+            case 1 -> tempArrayList = roundOne;
+            case 2 -> tempArrayList = quarterFinal;
+            case 3 -> tempArrayList = semiFinal;
+            case 4 -> tempArrayList = finalGame;
+        }
+
+        System.out.println("Round Number: " + roundNr);
+
+        if (tempArrayList != finalGame) {
+            for (int i = 0; i < tempArrayList.size(); i += 2) {
+                System.out.println("( " + tempArrayList.get(i).teamName + " VS " + tempArrayList.get(i + 1).teamName + " )");
+                System.out.println(tempArrayList.get(i) + "\tVS\t" + tempArrayList.get(i + 1));
+            }
+        } else {
+            System.out.println("( " + tempArrayList.get(0).teamName + " VS " + tempArrayList.get(1).teamName + " )");
+            System.out.println(tempArrayList.get(0) + "\tVS\t" + tempArrayList.get(1));
+        }
     }
 
 }
