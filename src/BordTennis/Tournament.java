@@ -2,7 +2,9 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Tournament {
     UI ui = new UI();
@@ -82,27 +84,21 @@ public class Tournament {
 
 
     public void Options(String choice) {
-        try {
-            switch (choice) {
-                case "1" -> { // Show all teams signed up
-                    System.out.println("All teams signed up: ");
-                    ui.teamList(teamList);
-                }
-                case "2" -> { // Show all team's positions in the tournament
-                    System.out.println("Positions of following teams: ");
-                    teamPointPositions(teamList);
-                }
-                case "3" -> { //Show game program where all teams are shown and when they have to play
-                    System.out.println("Overview of entire game program: ");
-                    knockOut.gamePlan();
-                }
-                case "4" -> //Show when next game is played
-                        System.out.println("Next game: is played shortly");
+        switch (choice) {
+            case "1" -> { // Show all teams signed up
+                System.out.println("All teams signed up: ");
+                ui.teamList(teamList);
             }
-
-        } catch (Exception e){
-            System.out.println("Input was invalid, try again");
-            return;
+            case "2" -> { // Show all team's positions in the tournament
+                System.out.println("Positions of following teams: ");
+                teamPointPositions(teamList);
+            }
+            case "3" -> { //Show game program where all teams are shown and when they have to play
+                System.out.println("Overview of entire game program: ");
+                knockOut.gamePlan();
+            }
+            case "4" -> //Show when next game is played
+                    System.out.println("Next game: is played shortly");
         }
     }
 

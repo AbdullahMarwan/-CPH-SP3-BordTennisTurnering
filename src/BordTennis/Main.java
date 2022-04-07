@@ -8,20 +8,20 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        System.out.println("\nWELCOME TO THE YEARLY TABLETOP TENNIS TOURNAMENT!!\n");
+
         Tournament tournament = new Tournament();
         Scanner sc = new Scanner(System.in);
         FileIO fileIO = new FileIO();
         UI ui = new UI();
-/*
+
         if (fileIO.isDataAvailable()) {
             tournament.addPlayersFromData();
         } else {
             tournament.initializeTeams();
         }
 
- */
-
-        tournament.initializeTeams();
 
         System.out.println("Enter OPTIONS by pressing 'O'\n");
         if (sc.nextLine().equalsIgnoreCase("O")) {
@@ -29,7 +29,6 @@ public class Main {
         }
 
         tournament.playMatches();
-
 
         try {
             FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");
