@@ -49,7 +49,7 @@ public class Tournament {
     }
 
     public void addPlayersFromData() {
-        ArrayList<String> data = new ArrayList<>();
+        ArrayList<String> data;
         data = fileIO.readGameData();
         int amountOfPlayersInTeam = 0;
 

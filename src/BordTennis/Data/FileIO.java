@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class FileIO implements IO {
     ArrayList<Player> players = new ArrayList<>();
-    File gameData = new File("src/Data/GameData.txt");
+    File gameData = new File("src/BordTennis/Data/GameData");
 
     public boolean isDataAvailable() {
         if (gameData != null) {
@@ -21,23 +21,21 @@ public class FileIO implements IO {
 
     @Override
     public ArrayList<String> readGameData() {
-        if (isDataAvailable()) {
-            File file = new File("src/Data/TeamData.txt");
-            ArrayList<String> data = new ArrayList<>();
+        File file = new File("src/BordTennis/Data/TeamData");
+        ArrayList<String> data = new ArrayList<>();
 
-            try {
-                Scanner scan = new Scanner(file);
-                while (scan.hasNextLine()) {
-                    data.add(scan.nextLine()); //“Egon: 30000”
-                }
-            } catch (
-                    FileNotFoundException e) {
-                e.printStackTrace();
+        try {
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                data.add(scan.nextLine());
             }
-            return data;
+        } catch (
+                FileNotFoundException e) {
+            e.printStackTrace();
         }
-        return null;
+        return data;
     }
+
 
     @Override
     public ArrayList<String> readTeamData(String path) {
