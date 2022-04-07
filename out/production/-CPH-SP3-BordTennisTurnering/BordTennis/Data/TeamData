@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 Team 1, Player1, Player2, Player3, Player4, Player5, 4, false
 Team 2, PlayerONE, PlayerTWO, PlayerTHREE, 7, false
 Team 3, T3N1, T3N2, T3N3, 1, false
@@ -7,8 +6,6 @@ Team 5, T5N1, T5N2, T5N3, 3, false
 Team 6, T6N1, T6N2, T6N3, 4, false
 Team 7, T7N1, T7N2, T7N3, 5, false
 Team 8, T8N1, T8N2, T8N3, 6, false
-=======
-Team 1: Player1: Player2: Player3: Player4: Player5: 4: false
 Team 2: PlayerONE: PlayerTWO: PlayerTHREE
 Team 3: T3N1: T3N2: T3N3
 Team 4: T4N1: T4N2: T4N3
