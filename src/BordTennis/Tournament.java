@@ -2,7 +2,9 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Tournament {
     UI ui = new UI();
@@ -11,20 +13,17 @@ public class Tournament {
     FileIO fileIO = new FileIO();
 
     public void initializeTeams() {
-        Team team1 = new Team("Team1", 5);
-        Team team2 = new Team("Team2", 8);
-        Team team3 = new Team("Team3", 6);
-        Team team4 = new Team("Team4", 1);
-        Team team5 = new Team("Team5", 9);
-        Team team6 = new Team("Team6", 12);
-        Team team7 = new Team("Team7", 25);
-        Team team8 = new Team("Team8", 4);
+        Team team1 = new Team("Team1");
+        Team team2 = new Team("Team2");
+        Team team3 = new Team("Team3");
+        Team team4 = new Team("Team4");
+        Team team5 = new Team("Team5");
+        Team team6 = new Team("Team6");
+        Team team7 = new Team("Team7");
+        Team team8 = new Team("Team8");
 
         team1.teamMaker();
         teamList.add(team1);
-
-        ui.teamList(teamList); //Quick debug
-
         team2.teamMaker();
         teamList.add(team2);
         team3.teamMaker();
@@ -55,17 +54,18 @@ public class Tournament {
 
         for (String s : data) {
             System.out.println(s);
-            String[] values = s.split(": "); //Team 1: Player1: Player2: Player3: Player4: Player5
+            String[] values = s.split(", ");
 
             String teamName = values[0];
-            Team team = new Team(teamName, 0);
+            Team team = new Team(teamName);
+            teamList.add(team);
 
             //Checks amount of players on a line in TeamData
-            switch (values.length) {
-                case 3 -> amountOfPlayersInTeam = 2;
-                case 4 -> amountOfPlayersInTeam = 3;
-                case 5 -> amountOfPlayersInTeam = 4;
-                case 6 -> amountOfPlayersInTeam = 5;
+            switch (values.length - 3) {
+                case 2 -> amountOfPlayersInTeam = 2;
+                case 3 -> amountOfPlayersInTeam = 3;
+                case 4 -> amountOfPlayersInTeam = 4;
+                case 5 -> amountOfPlayersInTeam = 5;
             }
 
             for (int i = 0; i < amountOfPlayersInTeam; i++) {
@@ -73,30 +73,33 @@ public class Tournament {
                 team.addPlayersToTeam(player);
             }
 
+            int teamPoints = Integer.parseInt(values[amountOfPlayersInTeam + 1]);
+            team.setPoints(teamPoints);
+
+            boolean isKnockOut = Boolean.parseBoolean(values[values.length - 1]);
+            team.setKnockOut(isKnockOut);
         }
+
     }
 
-    public void Options(int choice) {
+
+    public void Options(String choice) {
         switch (choice) {
-            case 1 -> { // Show all teams signed up
+            case "1" -> { // Show all teams signed up
                 System.out.println("All teams signed up: ");
                 ui.teamList(teamList);
             }
-            case 2 -> { // Show all team's positions in the tournament
+            case "2" -> { // Show all team's positions in the tournament
                 System.out.println("Positions of following teams: ");
                 teamPointPositions(teamList);
             }
-            case 3 -> { //Show game program where all teams are shown and when they have to play
+            case "3" -> { //Show game program where all teams are shown and when they have to play
                 System.out.println("Overview of entire game program: ");
                 knockOut.gamePlan();
             }
-            case 4 -> //Show when next game is played
-                    System.out.println("Next game: ");
-            case 5 -> //Change team name
-                    System.out.println("Change team name from: " + " to: " + " ");
-            //team1.changeTeamName();
+            case "4" -> //Show when next game is played
+                    System.out.println("Next game: is played shortly");
         }
-
     }
 
     public void teamPointPositions(ArrayList<Team> teamList) {

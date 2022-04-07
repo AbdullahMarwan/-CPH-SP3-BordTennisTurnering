@@ -4,6 +4,8 @@ import BordTennis.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,11 +13,16 @@ public class FileIO implements IO {
     ArrayList<Player> players = new ArrayList<>();
     File gameData = new File("src/BordTennis/Data/GameData");
 
-    public boolean isDataAvailable() {
-        if (gameData != null) {
-            return true;
+    public boolean isDataAvailable() throws FileNotFoundException {
+        ArrayList<Boolean> data = new ArrayList<>();
+        Scanner scan = new Scanner(gameData);
+        while (scan.hasNextLine()) {
+            data.add(Boolean.parseBoolean(scan.nextLine()));
         }
 
+        if (data.get(0) == true) {
+            return true;
+        }
         return false;
     }
 
@@ -35,7 +42,6 @@ public class FileIO implements IO {
         }
         return data;
     }
-
 
     @Override
     public ArrayList<String> readTeamData(String path) {
