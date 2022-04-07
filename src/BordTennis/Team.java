@@ -11,9 +11,10 @@ public class Team {
     boolean isKnockOut = false;
     boolean win = false;
 
-    public Team(String teamName, int points) {
+    public Team(String teamName, int points, boolean isKnockOut) {
         this.points = points;
         this.teamName = teamName;
+        this.isKnockOut = isKnockOut;
     }
 
     public void changeTeamName() {
