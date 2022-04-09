@@ -41,7 +41,6 @@ public class Team {
             System.out.println("\nInvalid team size - must be between 2-5.");
             createTeam();
         }
-
     }
 
     public void addPlayersToTeam(Player player) {

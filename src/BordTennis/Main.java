@@ -23,7 +23,7 @@ public class Main {
         } else {
             tournament.initializeTeams();
         }
-        
+
         System.out.println("Enter OPTIONS by pressing 'O'\n");
         if (sc.nextLine().equalsIgnoreCase("O")) {
             tournament.Options(ui.getUserInput());

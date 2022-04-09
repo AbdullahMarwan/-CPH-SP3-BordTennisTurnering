@@ -1,10 +1,7 @@
 package BordTennis;
 
 import BordTennis.Data.FileIO;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class Tournament {
     UI ui = new UI();
