@@ -1,6 +1,7 @@
 package BordTennis;
 
 import BordTennis.Data.FileIO;
+
 import java.util.ArrayList;
 
 public class Tournament {
@@ -40,6 +41,7 @@ public class Tournament {
     }
 
     public void playMatches() {
+        knockOut.playMatch();
         knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
     }
@@ -96,8 +98,12 @@ public class Tournament {
             }
             case "4" -> //Show when next game is played
                     System.out.println("Next game: is played shortly");
+            case "5" -> //Play match
+                    playMatches();
         }
     }
+
+
 
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;

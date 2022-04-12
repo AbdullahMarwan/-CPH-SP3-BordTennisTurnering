@@ -32,6 +32,10 @@ public class KnockOut {
         }
     }
 
+    public void playMatch() {
+
+    }
+
     public void gamePlan() {
         ArrayList<Team> tempArrayList = new ArrayList<>();
 
