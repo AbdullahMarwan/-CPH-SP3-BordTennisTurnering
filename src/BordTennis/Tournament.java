@@ -41,9 +41,9 @@ public class Tournament {
     }
 
     public void playMatches() {
-        knockOut.playMatch();
-        knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
+        knockOut.selectMatch();
+        knockOut.addPointsToWinner(teamList);
     }
 
     public void addPlayersFromData() {
@@ -73,7 +73,7 @@ public class Tournament {
             }
 
             int teamPoints = Integer.parseInt(values[amountOfPlayersInTeam + 1]);
-            team.setPoints(teamPoints);
+            team.setGoalPoints(teamPoints);
 
             boolean isKnockOut = Boolean.parseBoolean(values[values.length - 1]);
             team.setKnockOut(isKnockOut);
@@ -121,7 +121,7 @@ public class Tournament {
             }
         }
         for (Team t : teamList) {
-            System.out.println("Team " + t.teamName + " got " + t.points + " points.");
+            System.out.println("Team " + t.teamName + " got " + t.goalPoints + " points.");
         }
     }
 }

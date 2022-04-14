@@ -6,8 +6,9 @@ import java.util.Scanner;
 public class Team {
     Scanner sc = new Scanner(System.in);
     String teamName;
-    ArrayList<Player> team = new ArrayList<>();
-    int points = 0;
+    ArrayList<Player> players = new ArrayList<>();
+    int goalPoints = 0;
+    int totalTournamentPoints = 0;
     boolean isKnockOut = false;
     boolean win = false;
 
@@ -35,7 +36,7 @@ public class Team {
         if (teamSize <= 5 && teamSize >= 2) {
             for (int i = 0; i < teamSize; i++) {
                 Player player = new Player();
-                team.add(player);
+                players.add(player);
             }
         } else {
             System.out.println("\nInvalid team size - must be between 2-5.");
@@ -44,15 +45,15 @@ public class Team {
     }
 
     public void addPlayersToTeam(Player player) {
-        team.add(player);
+        players.add(player);
     }
 
-    public int getPoints() {
-        return points;
+    public int getGoalPoints() {
+        return goalPoints;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void setGoalPoints(int goalPoints) {
+        this.goalPoints = goalPoints;
     }
 
     public boolean isKnockOut() {
@@ -75,16 +76,16 @@ public class Team {
         return teamName;
     }
 
-    public ArrayList<Player> getTeam() {
-        return team;
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public String toString() {
         String string = "\nTeam name: " + this.teamName + "\n";
-        for (Player p : team) {
+        for (Player p : players) {
             string += "Player name: " + p.playerName + "\n";
         }
-        string += "Team points: " + points;
+        string += "Team points: " + goalPoints;
         string += "\nIs team Knockout? " + isKnockOut;
 
         return string;
@@ -92,10 +93,10 @@ public class Team {
 
     public int comparePoints(Team team) {
         int res = 0;
-        if (this.points > team.points) {
+        if (this.goalPoints > team.goalPoints) {
             res = -1;
         }
-        if (this.points < team.points) {
+        if (this.goalPoints < team.goalPoints) {
             res = 1;
         }
         return res;
