@@ -98,11 +98,12 @@ public class Tournament {
             }
             case "4" -> //Show when next game is played
                     System.out.println("Next game: is played shortly");
-            case "5" -> //Play match
-                    playMatches();
+            case "5" -> { //Play match
+                System.out.println("Play the matches");
+                playMatches();
+            }
         }
     }
-
 
 
     public void teamPointPositions(ArrayList<Team> teamList) {
