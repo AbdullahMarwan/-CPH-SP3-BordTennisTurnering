@@ -9,8 +9,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
 
+    public static void main(String[] args) throws FileNotFoundException {
+        boolean gameInProgress = true;
         System.out.println("\nWELCOME TO THE YEARLY TABLETOP TENNIS TOURNAMENT!!\n");
 
         Tournament tournament = new Tournament();
@@ -23,13 +24,13 @@ public class Main {
         } else {
             tournament.initializeTeams();
         }
-        
-        System.out.println("Enter OPTIONS by pressing 'O'\n");
-        if (sc.nextLine().equalsIgnoreCase("O")) {
-            tournament.Options(ui.getUserInput());
-        }
 
-        tournament.playMatches();
+        while (gameInProgress) {
+            System.out.println("Enter OPTIONS by pressing 'O'\n");
+            if (sc.nextLine().equalsIgnoreCase("O")) {
+                tournament.Options(ui.getUserInput());
+            }
+        }
 
         try {
             FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");

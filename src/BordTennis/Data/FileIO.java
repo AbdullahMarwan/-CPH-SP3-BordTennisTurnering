@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileIO implements IO {
-    ArrayList<Player> players = new ArrayList<>();
     File gameData = new File("src/BordTennis/Data/GameData");
 
     public boolean isDataAvailable() throws FileNotFoundException {

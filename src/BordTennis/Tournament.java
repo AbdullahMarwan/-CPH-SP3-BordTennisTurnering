@@ -2,9 +2,7 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class Tournament {
     UI ui = new UI();
@@ -43,8 +41,9 @@ public class Tournament {
     }
 
     public void playMatches() {
-        knockOut.addPointsToWinner(teamList);
         knockOut.addTeamsToRounds(teamList);
+        knockOut.selectMatch();
+        knockOut.addPointsToWinner(teamList);
     }
 
     public void addPlayersFromData() {
@@ -74,7 +73,7 @@ public class Tournament {
             }
 
             int teamPoints = Integer.parseInt(values[amountOfPlayersInTeam + 1]);
-            team.setPoints(teamPoints);
+            team.setGoalPoints(teamPoints);
 
             boolean isKnockOut = Boolean.parseBoolean(values[values.length - 1]);
             team.setKnockOut(isKnockOut);
@@ -99,8 +98,12 @@ public class Tournament {
             }
             case "4" -> //Show when next game is played
                     System.out.println("Next game: is played shortly");
+            case "5" -> //Play match
+                    playMatches();
         }
     }
+
+
 
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;
@@ -118,7 +121,7 @@ public class Tournament {
             }
         }
         for (Team t : teamList) {
-            System.out.println("Team " + t.teamName + " got " + t.points + " points.");
+            System.out.println("Team " + t.teamName + " got " + t.goalPoints + " points.");
         }
     }
 }
