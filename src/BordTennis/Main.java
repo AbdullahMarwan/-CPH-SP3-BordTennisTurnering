@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
-
+/*
     public static void main(String[] args) throws FileNotFoundException {
         boolean gameInProgress = true;
         System.out.println("\nWELCOME TO THE YEARLY TABLETOP TENNIS TOURNAMENT!!\n");
@@ -51,5 +51,13 @@ public class Main {
             e.printStackTrace();
         }
 
+    }
+ */
+
+
+    public static void main(String[] args) {
+        DBConnector test = new DBConnector();
+
+        test.createConnection();
     }
 }
