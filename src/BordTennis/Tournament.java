@@ -2,6 +2,8 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Tournament {
@@ -44,6 +46,26 @@ public class Tournament {
         knockOut.addTeamsToRounds(teamList);
         knockOut.selectMatch();
         knockOut.addPointsToWinner(teamList);
+    }
+
+    public ArrayList<String> addPlayersToData() {
+        ArrayList<String> data = new ArrayList<>();
+
+        for (Team t : teamList) {
+            data.add(t.teamName + ", ");
+
+            for (Player p : t.players) {
+                data.add(p.playerName + ", ");
+            }
+
+            data.add(t.totalTournamentPoints + ", ");
+
+            data.add(t.isKnockOut + "");
+        }
+
+        System.out.println("The Data is: " + data);
+
+        return data;
     }
 
     public void addPlayersFromData() {
@@ -102,6 +124,11 @@ public class Tournament {
                 System.out.println("Play the matches");
                 playMatches();
             }
+            case "6" -> { //Adds players to Data
+                System.out.println("Adding players to TeamData");
+                fileIO.saveTeamData(addPlayersToData());
+            }
+
         }
     }
 

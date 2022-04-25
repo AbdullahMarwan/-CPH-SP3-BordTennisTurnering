@@ -1,6 +1,7 @@
 package BordTennis.Data;
 
 import BordTennis.Player;
+import BordTennis.Tournament;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,13 +54,32 @@ public class FileIO implements IO {
     }
 
     @Override
-    public void saveGameData(String path) {
-
+    public void saveGameData() {
     }
 
     @Override
-    public void saveTeamData(String path) {
-
+    public void saveTeamData(ArrayList<String> data) {
+        try {
+            FileWriter myWriter = new FileWriter("src/BordTennis/Data/TeamData");
+            boolean header = true;
+            for(String s : data)
+            {
+                if (s.contains("Team") && header == false) {
+                    header = true;
+                    myWriter.write("\n");
+                }
+                else
+                {
+                    header = false;
+                }
+                myWriter.write(s);
+            }
+            // myWriter.write(String.valueOf(data));
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("An error occurred.");
+        }
     }
 
     @Override
