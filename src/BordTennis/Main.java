@@ -19,6 +19,16 @@ public class Main {
         FileIO fileIO = new FileIO();
         UI ui = new UI();
 
+        System.out.println("Would you like load the Database 'D' or the File 'F'\n");
+        if (sc.nextLine().equalsIgnoreCase("D")) {
+            tournament.Options(ui.getUserInput());
+        } else if (sc.nextLine().equalsIgnoreCase("F")) {
+            tournament.Options(ui.getUserInput());
+        } else {
+
+        }
+
+
         if (fileIO.isDataAvailable()) {
             tournament.addPlayersFromData();
         } else {
