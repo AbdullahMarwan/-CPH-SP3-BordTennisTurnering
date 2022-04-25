@@ -16,7 +16,7 @@ public class DBConnector {
         try {
 
             connection = DriverManager.getConnection(JdbcUrl, username, password);
-            insertInfoToDB();
+            insertTeamToDB();
             connection.close();
 
         } catch (SQLException e) {
@@ -24,16 +24,19 @@ public class DBConnector {
         }
     }
 
-    public void insertInfoToDB() {
-        String insertTeamName = "INSERT INTO team (name) VALUES ('TEST')";
+    public void insertTeamToDB() {
+        String insertTeam = "INSERT INTO team (name,score,goals) VALUES ('TEST',3,2)";
         try {
-            PreparedStatement query1 = connection.prepareStatement(insertTeamName);
+            PreparedStatement query1 = connection.prepareStatement(insertTeam);
             var query1Result = query1.executeUpdate();
             System.out.println(query1Result);
         } catch (SQLException a) {
             a.printStackTrace();
         }
     }
+
+
+
 
 
 }
