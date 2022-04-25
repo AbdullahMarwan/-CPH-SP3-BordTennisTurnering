@@ -65,28 +65,32 @@ public class KnockOut {
     public void teamFight(Team team1, Team team2) {
         assignPoints(team1);
         assignPoints(team2);
-        String teamName = null;
 
         if (team1.getGoalPoints() == team2.getGoalPoints()) {
-            System.out.println("Both teams ended in a draw, sudden death commences");
+            System.out.println(team1.teamName + " and " + team2.teamName + " have both ended in a draw, sudden death commences: ");
 
             int winningTeam = (int) (Math.random() * 1);
 
             if (winningTeam == 0) {
                 team1Win(team1, team2);
-                System.out.println(team1.teamName + " has won the sudden death");
+                System.out.println(team1.teamName + " has won the sudden death\n");
             } else {
                 team2Win(team1, team2);
-                System.out.println(team2.teamName + " has won the sudden death");
+                System.out.println(team2.teamName + " has won the sudden death\n");
             }
         } else if (team1.getGoalPoints() > team2.getGoalPoints()) {
             team1Win(team1, team2);
-            teamName = team1.getTeamName();
+            String teamName = team1.getTeamName();
+            matchResults(team1, team2, teamName);
         } else {
             team2Win(team1, team2);
-            teamName = team2.getTeamName();
+            String teamName = team2.getTeamName();
+            matchResults(team1, team2, teamName);
         }
 
+    }
+
+    public void matchResults(Team team1, Team team2, String teamName) {
         System.out.println("Match Results: ");
         System.out.println(team1.getTeamName() + " goals scored: " + team1.getGoalPoints());
         System.out.println(team2.getTeamName() + " goals scored: " + team2.getGoalPoints());
