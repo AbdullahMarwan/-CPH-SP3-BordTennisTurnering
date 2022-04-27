@@ -40,7 +40,12 @@ public class Main {
 
                 tournament.teamList.add(team1);
 
-                test.createConnection();
+                System.out.println("Team1 name (main) " + team1.teamName);
+
+                System.out.println("T Teamlist: (main) " + tournament.teamList.size());
+                System.out.println("T Teamlist: (main) " + tournament.teamList);
+
+                test.createConnection(tournament.teamList);
 
                 System.out.println("FINISHED");
 
