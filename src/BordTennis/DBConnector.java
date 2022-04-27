@@ -47,9 +47,21 @@ public class DBConnector {
 
     public void cleanDBData() {
 
+        String query = "TRUNCATE TABLE team";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void printOutDBData() {
+
+        /*
         String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
         try {
             Statement statement = connection.createStatement();
@@ -65,6 +77,8 @@ public class DBConnector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+         */
     }
 
     public void loadPreviousDBData() {
