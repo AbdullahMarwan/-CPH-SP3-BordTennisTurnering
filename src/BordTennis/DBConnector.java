@@ -14,8 +14,6 @@ public class DBConnector {
         String username = "root";
         String password = "NY9hcW7DAZ!+-qg1:]G6";
 
-        System.out.println("Start of create");
-
         try {
 
             connection = DriverManager.getConnection(JdbcUrl, username, password);
@@ -36,25 +34,17 @@ public class DBConnector {
         int score;
         int goals;
 
-        //System.out.println("name" + name);
-
-        System.out.println("T Teamlist: (DBC) " + teamList.size());
-        System.out.println("T Teamlist: (DBC) " + teamList);
-
         for (Team t : teamList) {
             name = t.teamName;
             score = t.totalTournamentPoints;
             goals = t.goalPoints;
 
-            System.out.println("/////////////");
-
-            System.out.println(name);
-            System.out.println(score);
-            System.out.println(goals);
-
-            String insertTeam = "INSERT INTO team (name, score, goals) VALUES (name,score,goals)";
+            String insertTeam = "INSERT INTO team (name, score, goals) VALUES (?,?,?)";
             try {
                 PreparedStatement query1 = connection.prepareStatement(insertTeam);
+                query1.setString(1, name);
+                query1.setString(2, String.valueOf(score));
+                query1.setString(3, String.valueOf(goals));
                 var query1Result = query1.executeUpdate();
                 System.out.println("Query1Result: " + query1Result);
             } catch (SQLException a) {
