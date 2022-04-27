@@ -1,5 +1,7 @@
 package BordTennis.Data;
 
+import BordTennis.Tournament;
+
 import java.util.ArrayList;
 
 public interface IO {
@@ -10,9 +12,9 @@ public interface IO {
 
     ArrayList<String> readTournamentData(String path);
 
-    void saveGameData(String path);
+    void saveGameData();
 
-    void saveTeamData(String path);
+    void saveTeamData(ArrayList<String> data);
 
     void saveTournamentData(String path);
 

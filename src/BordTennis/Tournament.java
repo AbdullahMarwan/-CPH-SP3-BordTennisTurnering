@@ -2,13 +2,19 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import static BordTennis.Main.saveToDatabase;
+import static BordTennis.Main.setGameInProgress;
 
 public class Tournament {
     UI ui = new UI();
     KnockOut knockOut = new KnockOut();
     ArrayList<Team> teamList = new ArrayList<>();
     FileIO fileIO = new FileIO();
+    DBConnector dbConnector = new DBConnector();
 
     public void initializeTeams() {
         Team team1 = new Team("Team1");
@@ -44,6 +50,26 @@ public class Tournament {
         knockOut.addTeamsToRounds(teamList);
         knockOut.selectMatch();
         knockOut.addPointsToWinner(teamList);
+    }
+
+    public ArrayList<String> addPlayersToData() {
+        ArrayList<String> data = new ArrayList<>();
+
+        for (Team t : teamList) {
+            data.add(t.teamName + ", ");
+
+            for (Player p : t.players) {
+                data.add(p.playerName + ", ");
+            }
+
+            data.add(t.totalTournamentPoints + ", ");
+
+            data.add(t.isKnockOut + "");
+        }
+
+        System.out.println("The Data is: " + data);
+
+        return data;
     }
 
     public void addPlayersFromData() {
@@ -98,11 +124,38 @@ public class Tournament {
             }
             case "4" -> //Show when next game is played
                     System.out.println("Next game: is played shortly");
-            case "5" -> //Play match
-                    playMatches();
+            case "5" -> { //Play match
+                System.out.println("Play the matches");
+                playMatches();
+            }
+            case "6" -> { //Saves team info
+                if (saveToDatabase == false) { //Save data to TeamData file
+                    System.out.println("Saving team info to TeamData");
+                    fileIO.saveTeamData(addPlayersToData());
+                } else if (saveToDatabase == true) {
+                    System.out.println("Saving team info to DataBase");
+                    dbConnector.saveDataToDB(teamList);
+                }
+
+                //addPlayersFromData(); //placeholder
+            }
+
+            case "7" -> { //Quit and save Tournament Data
+                try {
+                    FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");
+                    myWriter.write(String.valueOf(teamList));
+                    myWriter.close();
+
+                } catch (IOException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+
+                setGameInProgress(false); //Stops the game
+            }
+
         }
     }
-
 
 
     public void teamPointPositions(ArrayList<Team> teamList) {

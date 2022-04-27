@@ -1,28 +1,34 @@
 package BordTennis;
 
-import BordTennis.Data.FileIO;
-
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
-
+    public static boolean saveToDatabase;
+    public static boolean gameInProgress = true;
 
     public static void main(String[] args) throws FileNotFoundException {
-        boolean gameInProgress = true;
+
         System.out.println("\nWELCOME TO THE YEARLY TABLETOP TENNIS TOURNAMENT!!\n");
 
         Tournament tournament = new Tournament();
+        Gamecontroller gC = new Gamecontroller();
         Scanner sc = new Scanner(System.in);
-        FileIO fileIO = new FileIO();
         UI ui = new UI();
 
-        if (fileIO.isDataAvailable()) {
-            tournament.addPlayersFromData();
+        System.out.println("Would you like to use the Database 'D' or the Written File 'F' ?\n");
+
+        String input = sc.nextLine().toLowerCase(Locale.ROOT);
+
+        if (input.equals("d")) {
+            gC.dataBaseSetup(tournament, sc);
+        } else if (input.equals("f")) {
+            gC.fileIOSetup(tournament);
         } else {
-            tournament.initializeTeams();
+            System.out.println("Error loading either");
         }
 
         while (gameInProgress) {
@@ -31,16 +37,21 @@ public class Main {
                 tournament.Options(ui.getUserInput());
             }
         }
+    }
 
-        try {
-            FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");
-            myWriter.write(String.valueOf(tournament.teamList));
-            myWriter.close();
+    public static boolean isGameInProgress() {
+        return gameInProgress;
+    }
 
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+    public static void setGameInProgress(boolean gameInProgress) {
+        Main.gameInProgress = gameInProgress;
+    }
 
+    public static boolean isSaveToDatabase() {
+        return saveToDatabase;
+    }
+
+    public static void setSaveToDatabase(boolean saveToDatabase) {
+        Main.saveToDatabase = saveToDatabase;
     }
 }

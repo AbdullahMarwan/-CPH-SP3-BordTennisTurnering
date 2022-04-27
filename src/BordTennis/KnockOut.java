@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class KnockOut {
-    ArrayList<Team> roundOne = new ArrayList<>();
     ArrayList<Team> quarterFinal = new ArrayList<>();
     ArrayList<Team> semiFinal = new ArrayList<>();
     ArrayList<Team> finalGame = new ArrayList<>();
@@ -24,10 +23,9 @@ public class KnockOut {
         for (Team t : teamList) {
             if (!t.isKnockOut) {
                 switch (roundNr) {
-                    case 1 -> roundOne.add(t);
-                    case 2 -> quarterFinal.add(t);
-                    case 3 -> semiFinal.add(t);
-                    case 4 -> finalGame.add(t);
+                    case 1 -> quarterFinal.add(t);
+                    case 2 -> semiFinal.add(t);
+                    case 3 -> finalGame.add(t);
                 }
             }
         }
@@ -35,10 +33,18 @@ public class KnockOut {
 
     public void selectMatch() {
         switch (roundNr) {
-            case 1 -> playMatch(roundOne);
-            case 2 -> playMatch(quarterFinal);
-            case 3 -> playMatch(semiFinal);
-            case 4 -> playMatch(finalGame);
+            case 1 -> {
+                System.out.println("Current round: Quarter Finals");
+                playMatch(quarterFinal);
+            }
+            case 2 -> {
+                System.out.println("Current round: Semi Finals");
+                playMatch(semiFinal);
+            }
+            case 3 -> {
+                System.out.println("Current round: The Finale");
+                playMatch(finalGame);
+            }
         }
     }
 
@@ -59,22 +65,46 @@ public class KnockOut {
     public void teamFight(Team team1, Team team2) {
         assignPoints(team1);
         assignPoints(team2);
-        String teamName;
 
-        if (team1.getGoalPoints() < team2.getGoalPoints()) {
-            team1.win = true;
-            team2.isKnockOut = true;
-            teamName = team1.getTeamName();
+        if (team1.getGoalPoints() == team2.getGoalPoints()) {
+            System.out.println(team1.teamName + " and " + team2.teamName + " have both ended in a draw, sudden death commences: ");
+
+            int winningTeam = (int) (Math.random() * 1);
+
+            if (winningTeam == 0) {
+                team1Win(team1, team2);
+                System.out.println(team1.teamName + " has won the sudden death\n");
+            } else {
+                team2Win(team1, team2);
+                System.out.println(team2.teamName + " has won the sudden death\n");
+            }
+        } else if (team1.getGoalPoints() > team2.getGoalPoints()) {
+            team1Win(team1, team2);
+            String teamName = team1.getTeamName();
+            matchResults(team1, team2, teamName);
         } else {
-            team2.win = true;
-            team1.isKnockOut = true;
-            teamName = team2.getTeamName();
+            team2Win(team1, team2);
+            String teamName = team2.getTeamName();
+            matchResults(team1, team2, teamName);
         }
 
+    }
+
+    public void matchResults(Team team1, Team team2, String teamName) {
         System.out.println("Match Results: ");
-        System.out.println(team1.getTeamName() + "goals scored: " + team1.getGoalPoints());
-        System.out.println(team2.getTeamName() + "goals scored: " + team2.getGoalPoints());
-        System.out.println(teamName + " is the Winner!");
+        System.out.println(team1.getTeamName() + " goals scored: " + team1.getGoalPoints());
+        System.out.println(team2.getTeamName() + " goals scored: " + team2.getGoalPoints());
+        System.out.println(teamName + " is the Winner!\n");
+    }
+
+    public void team1Win(Team team1, Team team2) {
+        team1.win = true;
+        team2.isKnockOut = true;
+    }
+
+    public void team2Win(Team team1, Team team2) {
+        team2.win = true;
+        team1.isKnockOut = true;
     }
 
     public void assignPoints(Team team) {
@@ -85,10 +115,9 @@ public class KnockOut {
         ArrayList<Team> tempArrayList = new ArrayList<>();
 
         switch (roundNr) {
-            case 1 -> tempArrayList = roundOne;
-            case 2 -> tempArrayList = quarterFinal;
-            case 3 -> tempArrayList = semiFinal;
-            case 4 -> tempArrayList = finalGame;
+            case 1 -> tempArrayList = quarterFinal;
+            case 2 -> tempArrayList = semiFinal;
+            case 3 -> tempArrayList = finalGame;
         }
 
         System.out.println("Round Number: " + roundNr);

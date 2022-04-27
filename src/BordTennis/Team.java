@@ -80,6 +80,14 @@ public class Team {
         return players;
     }
 
+    public int getTotalTournamentPoints() {
+        return totalTournamentPoints;
+    }
+
+    public void setTotalTournamentPoints(int totalTournamentPoints) {
+        this.totalTournamentPoints = totalTournamentPoints;
+    }
+
     public String toString() {
         String string = "\nTeam name: " + this.teamName + "\n";
         for (Player p : players) {
