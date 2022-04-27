@@ -1,6 +1,7 @@
 package BordTennis;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Team {
@@ -32,13 +33,20 @@ public class Team {
 
     public void createTeam() {
         System.out.println("\nWhat's the team size?");
-        int teamSize = sc.nextInt();
-        if (teamSize <= 5 && teamSize >= 2) {
-            for (int i = 0; i < teamSize; i++) {
-                Player player = new Player();
-                players.add(player);
+        int teamSize;
+        try {
+            var input = sc.nextLine();
+            teamSize = Integer.parseInt(input);
+            if (teamSize <= 5 && teamSize >= 2) {
+                for (int i = 0; i < teamSize; i++) {
+                    Player player = new Player();
+                    players.add(player);
+                }
+            } else {
+                System.out.println("\nInvalid team size - must be between 2-5.");
+                createTeam();
             }
-        } else {
+        } catch (NumberFormatException e) {
             System.out.println("\nInvalid team size - must be between 2-5.");
             createTeam();
         }
