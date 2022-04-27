@@ -17,7 +17,6 @@ public class Main {
 
         Tournament tournament = new Tournament();
         Scanner sc = new Scanner(System.in);
-        //FileIO fileIO = new FileIO(tournament);
         UI ui = new UI();
 
         System.out.println("Would you like load the Database 'D' or the File 'F'\n");
@@ -25,6 +24,25 @@ public class Main {
             String input = sc.nextLine().toLowerCase(Locale.ROOT);
 
             if (input.equals("d")) {
+                DBConnector test = new DBConnector();
+                //tournament.initializeTeams();
+                Player player1 = new Player("Player1");
+                Player player2 = new Player("Player2");
+                Player player3 = new Player("Player3");
+                Team team1 = new Team("Team1");
+
+                team1.setGoalPoints(2);
+                team1.setTotalTournamentPoints(5);
+
+                team1.players.add(player1);
+                team1.players.add(player2);
+                team1.players.add(player3);
+
+                tournament.teamList.add(team1);
+
+                test.createConnection();
+
+                System.out.println("FINISHED");
 
             } else if (input.equals("f")) {
                 if (tournament.fileIO.isDataAvailable()) {
@@ -61,12 +79,4 @@ public class Main {
 
     }
 
-
-/*
-    public static void main(String[] args) {
-        DBConnector test = new DBConnector();
-        test.createConnection();
-    }
-
- */
 }
