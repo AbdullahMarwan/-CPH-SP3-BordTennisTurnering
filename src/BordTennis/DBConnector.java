@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DBConnector {
-    Connection connection = null;
+    static Connection connection = null;
     public int methodChoiceDB = 1;
 
     public void createConnection(ArrayList<Team> teamList) {
@@ -61,7 +61,6 @@ public class DBConnector {
 
     public void printOutDBData() {
 
-        /*
         String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
         try {
             Statement statement = connection.createStatement();
@@ -78,19 +77,11 @@ public class DBConnector {
             e.printStackTrace();
         }
 
-         */
+
     }
 
     public void loadPreviousDBData() {
-        String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
-        try {
-            Statement statement = connection.createStatement();
-            statement.execute(selectQuery);
 
-            ResultSet result = statement.getResultSet();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void saveDataToDB(ArrayList<Team> teamList) {
