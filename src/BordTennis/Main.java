@@ -1,9 +1,5 @@
 package BordTennis;
 
-import BordTennis.Data.FileIO;
-
-import java.sql.*;
-
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +7,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+    public static boolean saveToDatabase;
+    public static int methodChoiceDB = 1;
 
     public static void main(String[] args) throws FileNotFoundException {
         boolean gameInProgress = true;
@@ -20,28 +18,30 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         UI ui = new UI();
 
-        System.out.println("Would you like load the Database 'D' or the File 'F'\n");
+        System.out.println("Would you like to use the Database 'D' or the Written File 'F' ?\n");
         try {
             String input = sc.nextLine().toLowerCase(Locale.ROOT);
 
             if (input.equals("d")) {
-                DBConnector test = new DBConnector();
-                //tournament.initializeTeams();
-                Player player1 = new Player("Player1");
-                Player player2 = new Player("Player2");
-                Player player3 = new Player("Player3");
-                Team team1 = new Team("Team1");
+                DBConnector dbConnector = new DBConnector();
+                saveToDatabase = true;
 
-                team1.setGoalPoints(2);
-                team1.setTotalTournamentPoints(5);
+                System.out.println("This is the current data in the Database");
 
-                team1.players.add(player1);
-                team1.players.add(player2);
-                team1.players.add(player3);
+                methodChoiceDB = 1;
+                dbConnector.createConnection(tournament.teamList);
 
-                tournament.teamList.add(team1);
+                System.out.println("To load it press 'L' or start a new 'N'\n");
+                String input2 = sc.nextLine().toLowerCase(Locale.ROOT);
 
-                test.createConnection(tournament.teamList);
+                if (input2.equals("l")) { //Load previous DB data
+                    methodChoiceDB = 2;
+                    dbConnector.createConnection(tournament.teamList);
+                } else if (input2.equals("n")) { //Clean DB table and start initiliazing new teams
+                    methodChoiceDB = 4;
+                    dbConnector.createConnection(tournament.teamList);
+                    tournament.initializeTeams();
+                }
 
             } else if (input.equals("f")) {
                 if (tournament.fileIO.isDataAvailable()) {
@@ -77,4 +77,9 @@ public class Main {
 
     }
 
+    public void saveDataToDB() {
+        DBConnector dbConnector = new DBConnector();
+        methodChoiceDB = 4;
+        dbConnector.createConnection(tournament.teamList);
+    }
 }

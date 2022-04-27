@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static BordTennis.Main.methodChoiceDB;
+import static BordTennis.Main.saveToDatabase;
+
 public class DBConnector {
     Tournament tournament = new Tournament();
     Connection connection = null;
@@ -15,18 +18,42 @@ public class DBConnector {
         String password = "NY9hcW7DAZ!+-qg1:]G6";
 
         try {
-
             connection = DriverManager.getConnection(JdbcUrl, username, password);
-            System.out.println("Try");
-            insertTeamToDB(teamList);
+
+            switch (methodChoiceDB) {
+
+                case 1 -> { //PrintOut DBData on Screen
+                    printOutDBData();
+                }
+                case 2 -> { //Load the Previous DB Data
+                    loadPreviousDBData();
+                }
+
+                case 3 -> { //Save Team data to DB
+                    insertTeamToDB(teamList);
+                }
+
+                case 4 -> { //Clean DB Data
+                    //cleanDBData();
+                }
+
+            }
+
             connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("SQLexception");
         }
 
         System.out.println("Database Connected");
+    }
+
+    public void printOutDBData() {
+
+    }
+
+    public void loadPreviousDBData() {
+
     }
 
     public void insertTeamToDB(ArrayList<Team> teamList) {
@@ -46,7 +73,7 @@ public class DBConnector {
                 query1.setString(2, String.valueOf(score));
                 query1.setString(3, String.valueOf(goals));
                 var query1Result = query1.executeUpdate();
-                System.out.println("Query1Result: " + query1Result);
+                //System.out.println("Query1Result: " + query1Result);
             } catch (SQLException a) {
                 a.printStackTrace();
             }

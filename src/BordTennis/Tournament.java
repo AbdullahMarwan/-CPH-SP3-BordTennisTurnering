@@ -2,9 +2,9 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+
+import static BordTennis.Main.saveToDatabase;
 
 public class Tournament {
     UI ui = new UI();
@@ -124,9 +124,18 @@ public class Tournament {
                 System.out.println("Play the matches");
                 playMatches();
             }
-            case "6" -> { //Adds players to Data
-                System.out.println("Adding players to TeamData");
-                fileIO.saveTeamData(addPlayersToData());
+            case "6" -> { //Saves team info
+                if (saveToDatabase == false) { //Save data to TeamData file
+                    System.out.println("Saving team info to TeamData");
+                    fileIO.saveTeamData(addPlayersToData());
+                } else if (saveToDatabase == true) {
+                    System.out.println("Saving team info to DataBase");
+
+                    //methodChoiceDB = 4;
+                    //dbConnector.createConnection(tournament.teamList);
+                }
+
+                //addPlayersFromData(); //placeholder
             }
 
         }
