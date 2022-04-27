@@ -60,18 +60,22 @@ public class DBConnector {
         String name;
         int score;
         int goals;
+        boolean isKnockedOut;
 
         for (Team t : teamList) {
             name = t.teamName;
             score = t.totalTournamentPoints;
             goals = t.goalPoints;
+            isKnockedOut = t.isKnockOut;
 
-            String insertTeam = "INSERT INTO team (name, score, goals) VALUES (?,?,?)";
+            String insertTeam = "INSERT INTO team (name, score, goals, isknockedout) VALUES (?,?,?,?)";
             try {
                 PreparedStatement query1 = connection.prepareStatement(insertTeam);
                 query1.setString(1, name);
                 query1.setString(2, String.valueOf(score));
                 query1.setString(3, String.valueOf(goals));
+                query1.setString(4, String.valueOf(isKnockedOut));
+
                 var query1Result = query1.executeUpdate();
                 //System.out.println("Query1Result: " + query1Result);
             } catch (SQLException a) {
