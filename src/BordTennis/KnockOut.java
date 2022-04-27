@@ -132,5 +132,4 @@ public class KnockOut {
             System.out.println(tempArrayList.get(0) + "\tVS\t" + tempArrayList.get(1));
         }
     }
-
 }

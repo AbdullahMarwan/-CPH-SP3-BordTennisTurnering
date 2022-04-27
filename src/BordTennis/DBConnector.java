@@ -14,6 +14,8 @@ public class DBConnector {
         String username = "root";
         String password = "NY9hcW7DAZ!+-qg1:]G6";
 
+        System.out.println("Entered Create Connection");
+
         try {
             connection = DriverManager.getConnection(JdbcUrl, username, password);
 
@@ -27,6 +29,7 @@ public class DBConnector {
                 }
 
                 case 3 -> { //Save Team data to DB
+                    System.out.println("Inside of SaveTeamList");
                     insertTeamToDB(teamList);
                 }
 
@@ -42,7 +45,7 @@ public class DBConnector {
             e.printStackTrace();
         }
 
-        System.out.println("Database Connected");
+        System.out.println("Finished DBConnect");
     }
 
     public void cleanDBData() {
@@ -60,6 +63,7 @@ public class DBConnector {
     }
 
     public void printOutDBData() {
+        /*
 
         String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
         try {
@@ -78,6 +82,8 @@ public class DBConnector {
         }
 
 
+         */
+
     }
 
     public void loadPreviousDBData() {
@@ -85,7 +91,9 @@ public class DBConnector {
     }
 
     public void saveDataToDB(ArrayList<Team> teamList) {
-        methodChoiceDB = 4;
+        methodChoiceDB = 3;
+        System.out.println("Choice: " + methodChoiceDB);
+        System.out.println("Teamlist (savedata)" + teamList);
         createConnection(teamList);
     }
 
@@ -94,6 +102,8 @@ public class DBConnector {
         int score;
         int goals;
         boolean isKnockedOut;
+
+        System.out.println("Teamlist (insertDB)" + teamList);
 
         for (Team t : teamList) {
             name = t.teamName;

@@ -39,5 +39,4 @@ public class Gamecontroller {
             tournament.initializeTeams();
         }
     }
-
 }
