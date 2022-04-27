@@ -2,15 +2,19 @@ package BordTennis;
 
 import BordTennis.Data.FileIO;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static BordTennis.Main.saveToDatabase;
+import static BordTennis.Main.setGameInProgress;
 
 public class Tournament {
     UI ui = new UI();
     KnockOut knockOut = new KnockOut();
     ArrayList<Team> teamList = new ArrayList<>();
     FileIO fileIO = new FileIO();
+    DBConnector dbConnector = new DBConnector();
 
     public void initializeTeams() {
         Team team1 = new Team("Team1");
@@ -130,12 +134,24 @@ public class Tournament {
                     fileIO.saveTeamData(addPlayersToData());
                 } else if (saveToDatabase == true) {
                     System.out.println("Saving team info to DataBase");
-
-                    //methodChoiceDB = 4;
-                    //dbConnector.createConnection(tournament.teamList);
+                    dbConnector.saveDataToDB(teamList);
                 }
 
                 //addPlayersFromData(); //placeholder
+            }
+
+            case "7" -> { //Quit and save Tournament Data
+                try {
+                    FileWriter myWriter = new FileWriter("src/BordTennis/Data/TournamentData");
+                    myWriter.write(String.valueOf(teamList));
+                    myWriter.close();
+
+                } catch (IOException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+
+                setGameInProgress(false); //Stops the game
             }
 
         }

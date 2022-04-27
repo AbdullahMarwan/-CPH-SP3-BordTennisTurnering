@@ -5,12 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static BordTennis.Main.methodChoiceDB;
-import static BordTennis.Main.saveToDatabase;
-
 public class DBConnector {
-    Tournament tournament = new Tournament();
     Connection connection = null;
+    public int methodChoiceDB = 1;
 
     public void createConnection(ArrayList<Team> teamList) {
         String JdbcUrl = "jdbc:mysql://localhost/BordfodboldHold?" + "autoReconnect=true&useSSL=false";
@@ -34,7 +31,7 @@ public class DBConnector {
                 }
 
                 case 4 -> { //Clean DB Data
-                    //cleanDBData();
+                    cleanDBData();
                 }
 
             }
@@ -48,12 +45,21 @@ public class DBConnector {
         System.out.println("Database Connected");
     }
 
+    public void cleanDBData() {
+
+    }
+
     public void printOutDBData() {
 
     }
 
     public void loadPreviousDBData() {
 
+    }
+
+    public void saveDataToDB(ArrayList<Team> teamList) {
+        methodChoiceDB = 4;
+        createConnection(teamList);
     }
 
     public void insertTeamToDB(ArrayList<Team> teamList) {
@@ -84,6 +90,12 @@ public class DBConnector {
         }
     }
 
+    public int getMethodChoiceDB() {
+        return methodChoiceDB;
+    }
 
+    public void setMethodChoiceDB(int methodChoiceDB) {
+        this.methodChoiceDB = methodChoiceDB;
+    }
 }
 
