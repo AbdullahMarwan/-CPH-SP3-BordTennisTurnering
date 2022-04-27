@@ -32,29 +32,31 @@ public class DBConnector {
     }
 
     public void insertTeamToDB(ArrayList<Team> teamList) {
-        String teamName = "Teamswd";
+        String name;
         int score;
         int goals;
 
-        System.out.println("teamName" + teamName);
+        //System.out.println("name" + name);
 
         System.out.println("T Teamlist: (DBC) " + teamList.size());
         System.out.println("T Teamlist: (DBC) " + teamList);
 
         for (Team t : teamList) {
-            teamName = t.teamName;
+            name = t.teamName;
             score = t.totalTournamentPoints;
             goals = t.goalPoints;
 
-            System.out.println(teamName);
+            System.out.println("/////////////");
+
+            System.out.println(name);
             System.out.println(score);
             System.out.println(goals);
 
-            String insertTeam = "INSERT INTO team (name, score, goals) VALUES (teamName,score,goals)";
+            String insertTeam = "INSERT INTO team (name, score, goals) VALUES (name,score,goals)";
             try {
                 PreparedStatement query1 = connection.prepareStatement(insertTeam);
                 var query1Result = query1.executeUpdate();
-                System.out.println(query1Result);
+                System.out.println("Query1Result: " + query1Result);
             } catch (SQLException a) {
                 a.printStackTrace();
             }
