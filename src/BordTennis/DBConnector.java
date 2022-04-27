@@ -50,11 +50,33 @@ public class DBConnector {
     }
 
     public void printOutDBData() {
+        String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute(selectQuery);
 
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()) {
+                System.out.println("Name: " + result.getString("name"));
+                System.out.println("ID: " + result.getLong("id") + "\n");
+            }
+            System.out.println(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadPreviousDBData() {
+        String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute(selectQuery);
 
+            ResultSet result = statement.getResultSet();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void saveDataToDB(ArrayList<Team> teamList) {
