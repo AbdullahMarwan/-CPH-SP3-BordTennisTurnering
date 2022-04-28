@@ -56,7 +56,7 @@ public class DBConnector {
 
             statement.executeUpdate();
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -88,6 +88,37 @@ public class DBConnector {
 
     public void loadPreviousDBData() {
 
+        String selectQuery = "SELECT * FROM team ORDER BY id LIMIT 10";
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute(selectQuery);
+
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()) {
+                String teamName = result.getString("name");
+                Team team = new Team(teamName);
+
+                String playerName = result.getString("playerName1");
+                Player player = new Player(playerName);
+
+                team.setTotalTournamentPoints(result.getInt("score"));
+
+                team.setGoalPoints(result.getInt("goals"));
+
+                team.setKnockOut(Boolean.parseBoolean(result.getString("isknockedout")));
+
+                System.out.println("name: " + result.getString("name"));
+                System.out.println("Population: " + result.getLong("population") + "\n");
+            }
+            System.out.println(result);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void saveDataToDB(ArrayList<Team> teamList) {
@@ -102,6 +133,7 @@ public class DBConnector {
         int score;
         int goals;
         boolean isKnockedOut;
+        String playerName;
 
         System.out.println("Teamlist (insertDB)" + teamList);
 
@@ -122,18 +154,42 @@ public class DBConnector {
             } catch (SQLException a) {
                 a.printStackTrace();
             }
+
+            String insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES (?,?,?,?,?)";
+            try {
+
+                //String playerNameInc = "playerName";
+                int counter = 1;
+
+                for (Player p : t.players) {
+                    //playerNameInc += counter;
+                    playerName = p.playerName;
+
+                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                    query2.setString(counter, playerName);
+
+                    counter++;
+                }
+
+                counter = 1;
+
+            } catch (SQLException a) {
+                a.printStackTrace();
+            }
+
         }
+
+
     }
 
 
-    public void insertPlayerNameToDB(){
+    public void insertPlayerNameToDB() {
         String playerName1;
         String playerName2;
         String playerName3;
         String playerName4;
         String playerName5;
 
-        
 
     }
 
