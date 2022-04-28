@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static BordTennis.Main.setSaveToDatabase;
 
-public class Gamecontroller {
+public class gameController {
 
     public void dataBaseSetup(Tournament tournament, Scanner sc) {
         DBConnector dbConnector = new DBConnector();
