@@ -134,12 +134,12 @@ public class Tournament {
                 playMatches();
             }
             case "6" -> { //Saves team info
-                if (saveToDatabase == false) { //Save data to TeamData file
+                if (!saveToDatabase) { //Save data to TeamData file
                     System.out.println("Saving team info to TeamData");
                     fileIO.saveTeamData(addPlayersToData());
-                } else if (saveToDatabase == true) {
+                } else {
                     System.out.println("Saving team info to DataBase");
-                    System.out.println("Teamlist: " + teamList);
+                    System.out.println("Team list: " + teamList);
                     dbConnector.saveDataToDB(teamList);
                 }
 

@@ -13,8 +13,7 @@ public class Player {
 
     public Player() {
         System.out.println("\nWhat's your name?");
-        String name = sc.nextLine();
-        this.playerName = name;
+        this.playerName = sc.nextLine();
     }
 
     @Override

@@ -25,7 +25,7 @@ public class gameController {
         if (input2.equals("l")) { //Load previous DB data
             dbConnector.setMethodChoiceDB(2);
             dbConnector.createConnection(tournament.teamList);
-        } else if (input2.equals("n")) { //Clean DB table and start initiliazing new teams
+        } else if (input2.equals("n")) { //Clean DB table and start initializing new teams
             dbConnector.setMethodChoiceDB(4);
             dbConnector.createConnection(tournament.teamList);
             tournament.initializeTeams();

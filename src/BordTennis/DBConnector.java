@@ -164,7 +164,6 @@ public class DBConnector {
                 query1.setString(4, String.valueOf(isKnockedOut));
 
                 query1.executeUpdate();
-                //System.out.println("Query1Result: " + query1Result);
 
 
             } catch (SQLException a) {
