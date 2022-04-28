@@ -169,46 +169,27 @@ public class DBConnector {
                 a.printStackTrace();
             }
 
+            String insertPlayers = amountOfPlayers(t.players.size());
 
-            String insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES (?,?,?,?,?)";
             try {
 
                 //String playerNameInc = "playerName";
                 int counter = 1;
 
                 PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                for (Player p : t.players) {
+                    //playerNameInc += counter;
+                    playerName = p.playerName;
 
-                switch (t.players.size()) {
-                    case 2 -> {
-                        query2.setString(1, t.players.get(0).playerName);
-                        query2.setString(2, t.players.get(1).playerName);
-                        query2.setString(3, null);
-                        query2.setString(4, null);
-                        query2.setString(5, null);
-                    }
-                    case 3 -> {
-                        query2.setString(1, t.players.get(0).playerName);
-                        query2.setString(2, t.players.get(1).playerName);
-                        query2.setString(3, t.players.get(2).playerName);
-                        query2.setString(4, null);
-                        query2.setString(5, null);
-                    }
-                    case 4 -> {
-                        query2.setString(1, t.players.get(0).playerName);
-                        query2.setString(2, t.players.get(1).playerName);
-                        query2.setString(3, t.players.get(2).playerName);
-                        query2.setString(4, t.players.get(3).playerName);
-                        query2.setString(5, null);
-                    }
-                    case 5 -> {
-                        query2.setString(1, t.players.get(0).playerName);
-                        query2.setString(2, t.players.get(1).playerName);
-                        query2.setString(3, t.players.get(2).playerName);
-                        query2.setString(4, t.players.get(3).playerName);
-                        query2.setString(5, t.players.get(4).playerName);
-                    }
+
+                    query2.setString(counter, playerName);
+
+
+                    counter++;
                 }
                 query2.executeUpdate();
+
+                counter = 1;
 
             } catch (SQLException a) {
                 a.printStackTrace();
@@ -219,6 +200,27 @@ public class DBConnector {
 
 
     }
+
+    public String amountOfPlayers(int size) {
+        String insertPlayers = null;
+
+        switch (size) {
+            case 2 -> {
+                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2) VALUES (?,?)";
+            }
+            case 3 -> {
+                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3) VALUES (?,?,?)";
+            }
+            case 4 -> {
+                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4) VALUES (?,?,?,?,)";
+            }
+            case 5 -> {
+                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES (?,?,?,?,?)";
+            }
+        }
+        return null;
+    }
+
 
     public int getMethodChoiceDB() {
         return methodChoiceDB;
