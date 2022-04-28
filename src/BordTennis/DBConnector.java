@@ -110,8 +110,8 @@ public class DBConnector {
                 String teamName = result.getString("name");
                 Team team = new Team(teamName);
 
-                String playerName = result.getString("playerName1");
-                Player player = new Player(playerName);
+                //String playerName = result.getString("playerName1");
+                //Player player = new Player(playerName);
 
                 team.setTotalTournamentPoints(result.getInt("score"));
 
@@ -119,9 +119,10 @@ public class DBConnector {
 
                 team.setKnockOut(Boolean.parseBoolean(result.getString("isknockedout")));
 
-                System.out.println("name: " + result.getString("name"));
-                System.out.println("Population: " + result.getLong("population") + "\n");
+                System.out.println("\nTeam name: " + result.getString("name"));
+                System.out.println("ID: " + result.getLong("id") + "\n");
             }
+
             System.out.println(result);
 
 
