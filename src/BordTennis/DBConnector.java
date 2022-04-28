@@ -191,11 +191,12 @@ public class DBConnector {
 
                     counter++;
                     System.out.println("New Counter: " + counter);
+                    query2.executeUpdate();
                 }
                 System.out.println("Counter outside loop: " + counter);
                 counter = 1;
 
-                query2.executeUpdate();
+
 
 
             } catch (SQLException a) {
