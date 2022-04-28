@@ -132,7 +132,6 @@ public class DBConnector {
     }
 
 
-
     public void saveDataToDB(ArrayList<Team> teamList) {
         methodChoiceDB = 3;
         System.out.println("Choice: " + methodChoiceDB);
@@ -178,34 +177,45 @@ public class DBConnector {
                 int counter = 1;
 
                 PreparedStatement query2 = connection.prepareStatement(insertPlayers);
-                for (Player p : t.players) {
-                    //playerNameInc += counter;
-                    playerName = p.playerName;
 
-
-                    query2.setString(counter, playerName);
-
-                    System.out.println("Current Counter: " + counter);
-
-
-                    counter++;
-                    System.out.println("New Counter: " + counter);
-                    query2.executeUpdate();
+                switch (t.players.size()) {
+                    case 2 -> {
+                        query2.setString(1, t.players.get(0).playerName);
+                        query2.setString(2, t.players.get(1).playerName);
+                        query2.setString(3, null);
+                        query2.setString(4, null);
+                        query2.setString(5, null);
+                    }
+                    case 3 -> {
+                        query2.setString(1, t.players.get(0).playerName);
+                        query2.setString(2, t.players.get(1).playerName);
+                        query2.setString(3, t.players.get(2).playerName);
+                        query2.setString(4, null);
+                        query2.setString(5, null);
+                    }
+                    case 4 -> {
+                        query2.setString(1, t.players.get(0).playerName);
+                        query2.setString(2, t.players.get(1).playerName);
+                        query2.setString(3, t.players.get(2).playerName);
+                        query2.setString(4, t.players.get(3).playerName);
+                        query2.setString(5, null);
+                    }
+                    case 5 -> {
+                        query2.setString(1, t.players.get(0).playerName);
+                        query2.setString(2, t.players.get(1).playerName);
+                        query2.setString(3, t.players.get(2).playerName);
+                        query2.setString(4, t.players.get(3).playerName);
+                        query2.setString(5, t.players.get(4).playerName);
+                    }
                 }
-                System.out.println("Counter outside loop: " + counter);
-                counter = 1;
-
-
-
+                query2.executeUpdate();
 
             } catch (SQLException a) {
                 a.printStackTrace();
             }
 
 
-
         }
-
 
 
     }
