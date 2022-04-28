@@ -119,12 +119,22 @@ public class DBConnector {
                 query1.setString(3, String.valueOf(goals));
                 query1.setString(4, String.valueOf(isKnockedOut));
 
-                var query1Result = query1.executeUpdate();
-                //System.out.println("Query1Result: " + query1Result);
             } catch (SQLException a) {
                 a.printStackTrace();
             }
         }
+    }
+
+
+    public void insertPlayerNameToDB(){
+        String playerName1;
+        String playerName2;
+        String playerName3;
+        String playerName4;
+        String playerName5;
+
+        
+
     }
 
     public int getMethodChoiceDB() {
