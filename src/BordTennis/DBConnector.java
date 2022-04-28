@@ -50,11 +50,21 @@ public class DBConnector {
 
     public void cleanDBData() {
 
-        String query = "TRUNCATE TABLE team";
+        String query1 = "TRUNCATE TABLE team";
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
+            PreparedStatement statement1 = connection.prepareStatement(query1);
 
-            statement.executeUpdate();
+            statement1.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String query2 = "TRUNCATE TABLE playerName";
+        try {
+            PreparedStatement statement2 = connection.prepareStatement(query2);
+
+            statement2.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,7 +163,7 @@ public class DBConnector {
                 query1.setString(3, String.valueOf(goals));
                 query1.setString(4, String.valueOf(isKnockedOut));
 
-                var query1Result = query1.executeUpdate();
+                query1.executeUpdate();
                 //System.out.println("Query1Result: " + query1Result);
 
 
@@ -168,21 +178,24 @@ public class DBConnector {
                 //String playerNameInc = "playerName";
                 int counter = 1;
 
+                PreparedStatement query2 = connection.prepareStatement(insertPlayers);
                 for (Player p : t.players) {
                     //playerNameInc += counter;
                     playerName = p.playerName;
 
-                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+
                     query2.setString(counter, playerName);
 
+                    System.out.println("Current Counter: " + counter);
+
+
                     counter++;
-
-
+                    System.out.println("New Counter: " + counter);
                 }
-
+                System.out.println("Counter outside loop: " + counter);
                 counter = 1;
 
-                var query2Result = query2.executeUpdate();
+                query2.executeUpdate();
 
 
             } catch (SQLException a) {
