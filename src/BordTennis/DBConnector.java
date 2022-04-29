@@ -132,7 +132,6 @@ public class DBConnector {
 
     }
 
-
     public void saveDataToDB(ArrayList<Team> teamList) {
         methodChoiceDB = 3;
         System.out.println("Choice: " + methodChoiceDB);
@@ -140,14 +139,11 @@ public class DBConnector {
         createConnection(teamList);
     }
 
-    public void insertTeamToDB(ArrayList<Team> teamList) {
+    public void insertTeamToDB(ArrayList<Team> teamList) throws SQLException {
         String name;
         int score;
         int goals;
         boolean isKnockedOut;
-        String playerName;
-
-        System.out.println("Teamlist (insertDB)" + teamList);
 
         for (Team t : teamList) {
             name = t.teamName;
@@ -155,73 +151,42 @@ public class DBConnector {
             goals = t.goalPoints;
             isKnockedOut = t.isKnockOut;
 
-            String insertTeam = "INSERT INTO team (name, score, goals, isknockedout) VALUES (?,?,?,?)";
+            String insertTeam = "INSERT INTO team (name, score, goals, isknockedout) VALUES ('" + name + "','" + score + "','" + goals + "','" + isKnockedOut + "')";
             try {
                 PreparedStatement query1 = connection.prepareStatement(insertTeam);
-                query1.setString(1, name);
-                query1.setString(2, String.valueOf(score));
-                query1.setString(3, String.valueOf(goals));
-                query1.setString(4, String.valueOf(isKnockedOut));
-
-                query1.executeUpdate();
-
-
+                var query1Result = query1.executeUpdate();
             } catch (SQLException a) {
                 a.printStackTrace();
             }
 
-            String insertPlayers = amountOfPlayers(t.players.size());
+            String insertPlayers;
 
-            try {
-
-                //String playerNameInc = "playerName";
-                int counter = 1;
-
-                PreparedStatement query2 = connection.prepareStatement(insertPlayers);
-                for (Player p : t.players) {
-                    //playerNameInc += counter;
-                    playerName = p.playerName;
-
-
-                    query2.setString(counter, playerName);
-
-
-                    counter++;
+            switch (t.players.size()) {
+                case 2 -> {
+                    insertPlayers = "INSERT INTO playerName (playerName1, playerName2) VALUES ('" + t.players.get(0).playerName + "','" + t.players.get(1).playerName + "')";
+                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                    var query2Result = query2.executeUpdate();
                 }
-                query2.executeUpdate();
-
-                counter = 1;
-
-            } catch (SQLException a) {
-                a.printStackTrace();
+                case 3 -> {
+                    insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3) VALUES ('" + t.players.get(0).playerName + "','" + t.players.get(1).playerName + "','" + t.players.get(2).playerName + "')";
+                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                    var query2Result = query2.executeUpdate();
+                }
+                case 4 -> {
+                    insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4) VALUES ('" + t.players.get(0).playerName + "','" + t.players.get(1).playerName + "','" + t.players.get(2).playerName + "','" + t.players.get(3).playerName + "')";
+                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                    var query2Result = query2.executeUpdate();
+                }
+                case 5 -> {
+                    insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES ('" + t.players.get(0).playerName + "','" + t.players.get(1).playerName + "','" + t.players.get(2).playerName + "','" + t.players.get(3).playerName + "','" + t.players.get(4).playerName + "')";
+                    PreparedStatement query2 = connection.prepareStatement(insertPlayers);
+                    var query2Result = query2.executeUpdate();
+                }
             }
-
 
         }
 
-
     }
-
-    public String amountOfPlayers(int size) {
-        String insertPlayers = null;
-
-        switch (size) {
-            case 2 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2) VALUES (?,?)";
-            }
-            case 3 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3) VALUES (?,?,?)";
-            }
-            case 4 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4) VALUES (?,?,?,?,)";
-            }
-            case 5 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES (?,?,?,?,?)";
-            }
-        }
-        return null;
-    }
-
 
     public int getMethodChoiceDB() {
         return methodChoiceDB;
