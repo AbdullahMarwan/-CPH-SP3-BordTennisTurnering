@@ -4,14 +4,18 @@ import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DBConnector {
     static Connection connection = null;
     public int methodChoiceDB = 1;
     UI ui = new UI();
-    String JdbcUrl = "jdbc:mysql://localhost/BordfodboldHold?" + "autoReconnect=true&useSSL=false";
-    String username = "root";
-    String password = "NY9hcW7DAZ!+-qg1:]G6";
+
+    // Load database properties from config file.
+    Properties properties = PropertiesHelper.retrieveProperties();
+    String JdbcUrl = properties.getProperty("db.JdbcUrl") + properties.getProperty("db.parameters");
+    String username = properties.getProperty("db.username");
+    String password = properties.getProperty("db.password");
 
     public void createConnection(ArrayList<Team> teamList) {
         System.out.println("Entered Create Connection");
