@@ -16,8 +16,10 @@ public class gameController {
 
         System.out.println("This is the current data in the Database");
 
-        dbConnector.setMethodChoiceDB(1);
+        dbConnector.setMethodChoiceDB(2);
+        dbConnector.createConnection(tournament.teamList);
 
+        dbConnector.setMethodChoiceDB(1);
         dbConnector.createConnection(tournament.teamList);
 
         System.out.println("To load it press 'L' or start a new 'N'\n");

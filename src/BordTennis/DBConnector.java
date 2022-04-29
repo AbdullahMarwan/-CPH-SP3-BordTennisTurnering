@@ -22,7 +22,7 @@ public class DBConnector {
             switch (methodChoiceDB) {
 
                 case 1 -> { //PrintOut DBData on Screen
-                    printOutDBData();
+                    printOutDBData(teamList);
                     connection.close();
                 }
 
@@ -77,28 +77,8 @@ public class DBConnector {
 
     }
 
-    public void printOutDBData() {
-        /*
-
-        String selectQuery = "SELECT * FROM TEAM ORDER FROM ID";
-        try {
-            Statement statement = connection.createStatement();
-            statement.execute(selectQuery);
-
-            ResultSet result = statement.getResultSet();
-
-            while (result.next()) {
-                System.out.println("Name: " + result.getString("name"));
-                System.out.println("ID: " + result.getLong("id") + "\n");
-            }
-            System.out.println(result);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-         */
-
+    public void printOutDBData(ArrayList<Team> teamList) {
+        ui.teamList(teamList);
     }
 
     public ArrayList<Team> loadPreviousDBData() throws SQLException {
