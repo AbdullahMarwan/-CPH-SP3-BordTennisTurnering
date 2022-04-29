@@ -131,7 +131,6 @@ public class DBConnector {
 
     }
 
-
     public void saveDataToDB(ArrayList<Team> teamList) {
         methodChoiceDB = 3;
         System.out.println("Choice: " + methodChoiceDB);
@@ -144,9 +143,6 @@ public class DBConnector {
         int score;
         int goals;
         boolean isKnockedOut;
-        String playerName;
-
-        System.out.println("Teamlist (insertDB)" + teamList);
 
         for (Team t : teamList) {
             name = t.teamName;
@@ -158,23 +154,10 @@ public class DBConnector {
             try {
                 PreparedStatement query1 = connection.prepareStatement(insertTeam);
                 var query1Result = query1.executeUpdate();
-                /*
-                if(query1Result.next()) {
-
-                    query1.setString(1, name);
-                    query1.setString(1, String.valueOf(score));
-                    query1.setString(1, String.valueOf(goals));
-                    query1.setString(1, String.valueOf(isKnockedOut));
-                    }
-                     */
-                // query1.executeQuery();
-
-
             } catch (SQLException a) {
                 a.printStackTrace();
             }
 
-            //String insertPlayers = amountOfPlayers(t.players.size());
             String insertPlayers;
 
             switch (t.players.size()) {
@@ -200,51 +183,9 @@ public class DBConnector {
                 }
             }
 
-            //String playerNameInc = "playerName";
-            int counter = 1;
-
-            //PreparedStatement query2 = connection.prepareStatement(insertPlayers);
-            //var query2Result = query2.executeUpdate();
-
-            for (Player p : t.players) {
-                //playerNameInc += counter;
-                playerName = p.playerName;
-
-                //query2.setString(counter, playerName);
-
-
-                counter++;
-            }
-            //query2.executeQuery();
-
-            counter = 1;
-
-
         }
 
-
     }
-
-    public String amountOfPlayers(int size) {
-        String insertPlayers = null;
-
-        switch (size) {
-            case 2 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2) VALUES ('?','?')";
-            }
-            case 3 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3) VALUES ('?','?','?')";
-            }
-            case 4 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4) VALUES ('?','?','?','?')";
-            }
-            case 5 -> {
-                return insertPlayers = "INSERT INTO playerName (playerName1, playerName2, playerName3, playerName4, playerName5) VALUES ('?','?','?','?','?')";
-            }
-        }
-        return null;
-    }
-
 
     public int getMethodChoiceDB() {
         return methodChoiceDB;
