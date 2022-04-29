@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class DBConnector {
     static Connection connection = null;
     public int methodChoiceDB = 1;
+    UI ui = new UI();
 
     public void createConnection(ArrayList<Team> teamList) {
         String JdbcUrl = "jdbc:mysql://localhost/BordfodboldHold?" + "autoReconnect=true&useSSL=false";
@@ -24,6 +25,7 @@ public class DBConnector {
                 case 1 -> { //PrintOut DBData on Screen
                     printOutDBData();
                 }
+
                 case 2 -> { //Load the Previous DB Data
                     loadPreviousDBData();
                 }
@@ -96,39 +98,51 @@ public class DBConnector {
 
     }
 
-    public void loadPreviousDBData() {
+    public ArrayList<Team> loadPreviousDBData() {
+        ArrayList<Team> teamList = new ArrayList<>();
 
-        String selectQuery = "SELECT * FROM team ORDER BY id LIMIT 10";
+        String selectQueryTeam = "SELECT * FROM team ORDER BY id";
+        String selectQueryPlayer = "SELECT * FROM playerName ORDER BY id";
 
         try {
             Statement statement = connection.createStatement();
-            statement.execute(selectQuery);
 
-            ResultSet result = statement.getResultSet();
 
-            while (result.next()) {
-                String teamName = result.getString("name");
+            for (int k = 0; k < 2; k++) {
+                statement.execute(selectQueryTeam);
+                ResultSet result1 = statement.getResultSet();
+
+                result1.next();
+                String teamName = result1.getString("name");
                 Team team = new Team(teamName);
+                teamList.add(team);
 
-                String playerName = result.getString("playerName1");
-                Player player = new Player(playerName);
+                team.setTotalTournamentPoints(result1.getInt("score"));
+                team.setGoalPoints(result1.getInt("goals"));
+                team.setKnockOut(Boolean.parseBoolean(result1.getString("isknockedout")));
 
-                team.setTotalTournamentPoints(result.getInt("score"));
+                statement.execute(selectQueryPlayer);
+                ResultSet result2 = statement.getResultSet();
 
-                team.setGoalPoints(result.getInt("goals"));
+                String playerName = null;
 
-                team.setKnockOut(Boolean.parseBoolean(result.getString("isknockedout")));
+                result2.next();
+                for (int i = 1; i < 6; i++) {
 
-                System.out.println("name: " + result.getString("name"));
-                System.out.println("Population: " + result.getLong("population") + "\n");
+                    if (result2.getString("playerName" + i) != null) {
+                        playerName = result2.getString("playerName" + i);
+                        Player player = new Player(playerName);
+                        team.addPlayersToTeam(player);
+                    }
+                }
+
             }
-            System.out.println(result);
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        ui.teamList(teamList);
+        return teamList;
     }
 
     public void saveDataToDB(ArrayList<Team> teamList) {
