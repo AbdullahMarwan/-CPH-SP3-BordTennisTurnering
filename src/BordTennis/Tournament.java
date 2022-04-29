@@ -19,7 +19,6 @@ public class Tournament {
     public void initializeTeams() {
         Team team1 = new Team("Team1");
         Team team2 = new Team("Team2");
-        /*
         Team team3 = new Team("Team3");
         Team team4 = new Team("Team4");
         Team team5 = new Team("Team5");
@@ -27,13 +26,10 @@ public class Tournament {
         Team team7 = new Team("Team7");
         Team team8 = new Team("Team8");
 
-         */
-
         team1.teamMaker();
         teamList.add(team1);
         team2.teamMaker();
         teamList.add(team2);
-        /*
         team3.teamMaker();
         teamList.add(team3);
         team4.teamMaker();
@@ -46,8 +42,6 @@ public class Tournament {
         teamList.add(team7);
         team8.teamMaker();
         teamList.add(team8);
-
-         */
 
         ui.teamList(teamList);
     }
@@ -143,7 +137,7 @@ public class Tournament {
                     dbConnector.saveDataToDB(teamList);
                 }
 
-                //addPlayersFromData(); //placeholder
+
             }
 
             case "7" -> { //Quit and save Tournament Data

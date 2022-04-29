@@ -29,6 +29,7 @@ public class gameController {
             dbConnector.setMethodChoiceDB(4);
             dbConnector.createConnection(tournament.teamList);
             tournament.initializeTeams();
+            //tournament.addPlayersFromData(); //placeholder
         }
     }
 
