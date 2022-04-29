@@ -1,8 +1,5 @@
 package BordTennis.Data;
 
-import BordTennis.Player;
-import BordTennis.Tournament;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -20,10 +17,7 @@ public class FileIO implements IO {
             data.add(Boolean.parseBoolean(scan.nextLine()));
         }
 
-        if (data.get(0) == true) {
-            return true;
-        }
-        return false;
+        return data.get(0);
     }
 
     @Override
@@ -64,7 +58,7 @@ public class FileIO implements IO {
             boolean header = true;
             for(String s : data)
             {
-                if (s.contains("Team") && header == false) {
+                if (s.contains("Team") && !header) {
                     header = true;
                     myWriter.write("\n");
                 }

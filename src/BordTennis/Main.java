@@ -1,8 +1,6 @@
 package BordTennis;
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,7 +13,7 @@ public class Main {
         System.out.println("\nWELCOME TO THE YEARLY TABLETOP TENNIS TOURNAMENT!!\n");
 
         Tournament tournament = new Tournament();
-        Gamecontroller gC = new Gamecontroller();
+        gameController gC = new gameController();
         Scanner sc = new Scanner(System.in);
         UI ui = new UI();
 

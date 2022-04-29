@@ -15,8 +15,7 @@ public class UI {
                 "5: Play the next games\n" +
                 "6: Saves team info to DB/File\n" +
                 "7: Quit and save Tournament Data\n");
-        String input = sc.nextLine();
-        return input;
+        return sc.nextLine();
     }
 
     public void teamList(ArrayList<Team> arrayList) {

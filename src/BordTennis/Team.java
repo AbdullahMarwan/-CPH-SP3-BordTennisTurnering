@@ -32,13 +32,20 @@ public class Team {
 
     public void createTeam() {
         System.out.println("\nWhat's the team size?");
-        int teamSize = sc.nextInt();
-        if (teamSize <= 5 && teamSize >= 2) {
-            for (int i = 0; i < teamSize; i++) {
-                Player player = new Player();
-                players.add(player);
+        int teamSize;
+        try {
+            var input = sc.nextLine();
+            teamSize = Integer.parseInt(input);
+            if (teamSize <= 5 && teamSize >= 2) {
+                for (int i = 0; i < teamSize; i++) {
+                    Player player = new Player();
+                    players.add(player);
+                }
+            } else {
+                System.out.println("\nInvalid team size - must be between 2-5.");
+                createTeam();
             }
-        } else {
+        } catch (NumberFormatException e) {
             System.out.println("\nInvalid team size - must be between 2-5.");
             createTeam();
         }
@@ -89,14 +96,14 @@ public class Team {
     }
 
     public String toString() {
-        String string = "\nTeam name: " + this.teamName + "\n";
+        StringBuilder string = new StringBuilder("\nTeam name: " + this.teamName + "\n");
         for (Player p : players) {
-            string += "Player name: " + p.playerName + "\n";
+            string.append("Player name: ").append(p.playerName).append("\n");
         }
-        string += "Team points: " + goalPoints;
-        string += "\nIs team Knockout? " + isKnockOut;
+        string.append("Team points: ").append(goalPoints);
+        string.append("\nIs team Knockout? ").append(isKnockOut);
 
-        return string;
+        return string.toString();
     }
 
     public int comparePoints(Team team) {

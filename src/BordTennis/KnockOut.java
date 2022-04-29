@@ -1,6 +1,6 @@
 package BordTennis;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class KnockOut {
@@ -18,7 +18,7 @@ public class KnockOut {
         }
     }
 
-    //Method to add each NON-knockouted team to the next rounds
+    //Method to add each NON-knockout team to the next rounds
     public void addTeamsToRounds(ArrayList<Team> teamList) {
         for (Team t : teamList) {
             if (!t.isKnockOut) {
@@ -132,5 +132,4 @@ public class KnockOut {
             System.out.println(tempArrayList.get(0) + "\tVS\t" + tempArrayList.get(1));
         }
     }
-
 }

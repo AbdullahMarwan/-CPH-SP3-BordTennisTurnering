@@ -103,10 +103,9 @@ public class Tournament {
 
             boolean isKnockOut = Boolean.parseBoolean(values[values.length - 1]);
             team.setKnockOut(isKnockOut);
+
         }
-
     }
-
 
     public void Options(String choice) {
         switch (choice) {
@@ -129,15 +128,16 @@ public class Tournament {
                 playMatches();
             }
             case "6" -> { //Saves team info
-                if (saveToDatabase == false) { //Save data to TeamData file
+                if (!saveToDatabase) { //Save data to TeamData file
                     System.out.println("Saving team info to TeamData");
                     fileIO.saveTeamData(addPlayersToData());
-                } else if (saveToDatabase == true) {
+                } else {
                     System.out.println("Saving team info to DataBase");
+                    System.out.println("Team list: " + teamList);
                     dbConnector.saveDataToDB(teamList);
                 }
 
-                //addPlayersFromData(); //placeholder
+
             }
 
             case "7" -> { //Quit and save Tournament Data
@@ -153,10 +153,8 @@ public class Tournament {
 
                 setGameInProgress(false); //Stops the game
             }
-
         }
     }
-
 
     public void teamPointPositions(ArrayList<Team> teamList) {
         Team temp;
